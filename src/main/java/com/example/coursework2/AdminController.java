@@ -34,9 +34,30 @@ public class AdminController {
 
     @FXML
     void initialize() {
+
+        AdminClient client = new AdminClient();
+
         connectbutton.setOnAction(event->{
             String ip_adr = ip_adress.getText();
             int port_ = Integer.parseInt(port.getText());
+            System.out.println(client.Check_Connect(ip_adr,port_));
+        });
+
+        signinbutton.setOnAction(event->{
+            String ip_adr = ip_adress.getText();
+            int port_ = Integer.parseInt(port.getText());
+
+
+            if(client.signIn(ip_adr,port_,loginfield.getText(),passwordfield.getText()) == 1){
+                System.out.println("Такой аккаунт существует вы успешно вошли");
+            }
+            if(client.signIn(ip_adr,port_,loginfield.getText(),passwordfield.getText()) == 0){
+                System.out.println("Не удалось войти");
+            }
+
+
+
+
         });
 
     }
