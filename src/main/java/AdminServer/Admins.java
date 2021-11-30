@@ -12,8 +12,8 @@ public class Admins {
 
     }
 
-    public Admins(String admin_id, String admin_firstname, String admin_lastname, String admin_login, String admin_password, String admin_email) {
-        this.admin_id = admin_id;
+    public Admins( String admin_firstname, String admin_lastname, String admin_login, String admin_password, String admin_email) {
+
         this.admin_firstname = admin_firstname;
         this.admin_lastname = admin_lastname;
         this.admin_login = admin_login;

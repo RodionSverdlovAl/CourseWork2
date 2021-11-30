@@ -25,7 +25,7 @@ public class DatabaseHandler extends Configs {
         String insert = "INSERT INTO " + Const.USER_TABLE + "(" +
                 Const.FIRST_NAME + "," + Const.LAST_NAME + "," +
                 Const.LOGIN + "," + Const.PASSWORD + "," +
-                Const.EMAIL + "," + ")" +
+                Const.EMAIL + ")" +
                 "VALUES(?,?,?,?,?)";
 
         try {

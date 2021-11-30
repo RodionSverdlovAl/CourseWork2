@@ -1,10 +1,15 @@
 package com.example.coursework2;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class AdminController {
 
@@ -50,14 +55,25 @@ public class AdminController {
 
             if(client.signIn(ip_adr,port_,loginfield.getText(),passwordfield.getText()) == 1){
                 System.out.println("Такой аккаунт существует вы успешно вошли");
+                signinbutton.getScene().getWindow().hide();
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("AdminApp.fxml"));
+
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+
+                stage.setScene(new Scene(root));
+                stage.showAndWait();
             }
             if(client.signIn(ip_adr,port_,loginfield.getText(),passwordfield.getText()) == 0){
                 System.out.println("Не удалось войти");
             }
-
-
-
-
         });
 
     }

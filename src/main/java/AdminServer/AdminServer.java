@@ -36,7 +36,21 @@ public class AdminServer {
                                         System.out.println(SingInSuccess);
                                         writer.newLine();
                                         writer.flush();
-                                    }
+                                    }break;
+                                    case "addAdmin":{
+                                        System.out.println("Вы вошли в кейс добавление администратора");
+
+                                        String name = reader.readLine();
+                                        String surname = reader.readLine();
+                                        String login = reader.readLine();
+                                        String password = reader.readLine();
+                                        String email = reader.readLine();
+                                        Admins admin = new Admins(name,surname,login,password,email);
+                                        DatabaseHandler dbHandler = new DatabaseHandler();
+                                        dbHandler.signUpAdmin(admin);
+                                        System.out.println(name+surname+login+password+email);
+
+                                    }break;
                                 }
 
                             }catch (IOException e){
