@@ -1,6 +1,8 @@
 package AdminServer;
 
-public class Admins {
+import java.io.Serializable;
+
+public class Admins implements Serializable {
     private String admin_id;
     private String admin_firstname;
     private String admin_lastname;

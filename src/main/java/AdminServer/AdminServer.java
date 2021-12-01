@@ -49,6 +49,29 @@ public class AdminServer {
                                         DatabaseHandler dbHandler = new DatabaseHandler();
                                         dbHandler.signUpAdmin(admin);
                                         System.out.println(name+surname+login+password+email);
+                                    }break;
+                                    case "showadmins": {
+                                        System.out.println("Вы вошли в кейс просмотр админов");
+                                        DatabaseHandler d = new DatabaseHandler();
+                                        ArrayList<Admins> admins = d.getProducts();
+                                        for(Admins p : admins){
+                                            System.out.println(p.toString());
+                                            System.out.println(p.getAdmin_firstname()+" "+p.getAdmin_lastname());
+                                        }
+                                        //////////////////////////////////////////////
+                                        ArrayList<Admins> arrayList =  new ArrayList<Admins>();
+                                        for(Admins p : admins){
+                                            System.out.println(p.toString());
+                                            arrayList.add(p);
+                                        }
+                                        try {
+                                            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                                            objectOutputStream.writeObject(arrayList);
+                                        }
+                                        catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+
 
                                     }break;
                                 }

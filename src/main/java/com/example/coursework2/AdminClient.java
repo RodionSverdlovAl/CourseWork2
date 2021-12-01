@@ -1,7 +1,10 @@
 package com.example.coursework2;
 
+import AdminServer.Admins;
+
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 
 
 public class AdminClient {
@@ -101,6 +104,44 @@ public class AdminClient {
             log = "Не удалось подключится к серверу";
         }
     }
+
+    ArrayList<Admins> showAdmins(){
+        try(Socket clientSocket = new Socket("127.0.0.1",8081);
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
+        {
+            log = "Вы подключились к серверу";
+            writer.write("showadmins");
+            writer.newLine();
+            writer.flush();
+
+            ArrayList<Admins> arrayList = new ArrayList<Admins>();
+            try {
+                ObjectInputStream objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
+                try {
+                    Object object = objectInputStream.readObject();
+                    arrayList =  (ArrayList<Admins>) object;
+                    System.out.println(arrayList.size());
+                    for(int i=0; i<arrayList.size(); i++){
+                        System.out.println(arrayList.get(i).getAdmin_firstname());
+                    }
+                    return arrayList;
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            log = "Не удалось подключится к серверу";
+        }
+        return null;
+    }
+
 
 
 }

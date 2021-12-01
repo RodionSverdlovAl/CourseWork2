@@ -66,21 +66,20 @@ public class DatabaseHandler extends Configs {
         return resSet;
     }
 
-   /* public ArrayList<Product> getProducts() {
-        ArrayList<Product> products = new ArrayList<Product>();
+    public ArrayList<Admins> getProducts() {
+        ArrayList<Admins> products = new ArrayList<Admins>();
         String select = "SELECT * FROM " + Const.USER_TABLE;
         try {
             PreparedStatement prSt = getDbConnection().prepareStatement(select);
             ResultSet resSet = prSt.executeQuery();
             while (resSet.next()) {
-                Product p = new Product();
-                p.setProduct_name(resSet.getString("Name"));
-                p.setProduct_country(resSet.getString("Country"));
-                p.setProduct_type(resSet.getString("type"));
-                p.setProduct_maker(resSet.getString("maker"));
-                p.setProduct_count(resSet.getString("count"));
-                p.setProduct_price(resSet.getString("price"));
-                p.setProduct_id(resSet.getString("id"));
+                Admins p = new Admins();
+                p.setAdmin_firstname(resSet.getString("firstname"));
+                p.setAdmin_lastname(resSet.getString("lastname"));
+                p.setAdmin_login(resSet.getString("login"));
+                p.setAdmin_password(resSet.getString("password"));
+                p.setAdmin_email(resSet.getString("email"));
+                p.setAdmin_id(resSet.getString("id"));
 
                 products.add(p);
             }
@@ -90,6 +89,6 @@ public class DatabaseHandler extends Configs {
             e.printStackTrace();
         }
         return products;
-    }*/
+    }
 
 }
