@@ -73,7 +73,7 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #3B3E4A;">
                                        <children>
-                                          <TableView fx:id="admintable" layoutX="14.0" layoutY="14.0" prefHeight="665.0" prefWidth="797.0" style="-fx-background-color: #A7B8CA;">
+                                          <TableView fx:id="admintable" layoutX="14.0" layoutY="14.0" prefHeight="434.0" prefWidth="797.0" style="-fx-background-color: #A7B8CA;">
                                             <columns>
                                               <TableColumn fx:id="viewid" prefWidth="75.0" text="id" />
                                               <TableColumn fx:id="viewname" prefWidth="159.0" text="Имя" />
@@ -82,7 +82,7 @@
                                                 <TableColumn fx:id="viewemail" prefWidth="236.0" text="Email" />
                                             </columns>
                                           </TableView>
-                                          <Button fx:id="uploadbutton" layoutX="14.0" layoutY="689.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="138.0" text="Обновить" />
+                                          <Button fx:id="uploadbutton" layoutX="14.0" layoutY="467.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" text="Обновить" />
                                        </children></AnchorPane>
                               </content>
                             </Tab>

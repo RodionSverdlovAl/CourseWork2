@@ -80,27 +80,27 @@ public class AdminAppController {
             AdminClient admin_client = new AdminClient();
             admin_client.showAdmins();
             //System.out.println(admin_client.showAdmins().get(0).getAdmin_firstname());
-            //ArrayList<Admins> adminsArrayList = admin_client.showAdmins();
+            ArrayList<Admins> adminsArrayList = admin_client.showAdmins();
 
 
-            ObservableList<Admins> list = FXCollections.observableArrayList(admin_client.showAdmins());
+            /*ObservableList<Admins> list = FXCollections.observableArrayList(admin_client.showAdmins());
             System.out.println(list.get(3).getAdmin_email());
 
 
-           /* viewname.setCellValueFactory(new PropertyValueFactory<Admins, String>("admin_firstname"));
+            viewname.setCellValueFactory(new PropertyValueFactory<Admins, String>("admin_firstname"));
             viewsurname.setCellValueFactory(new PropertyValueFactory<Admins, String>("admin_lastname"));
             viewid.setCellValueFactory(new PropertyValueFactory<Admins, String>("admin_id"));
             viewemail.setCellValueFactory(new PropertyValueFactory<Admins, String>("admin_email"));
             admintable.setItems(list);*/
 
-            //this.AdminArrayList = adminsArrayList;
-            //ObservableList<Admins> observableList = FXCollections.observableArrayList(admin_client.showAdmins());
-            //admintable.setItems(observableList);
-            //admintable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory("admin_id"));
-            //viewname.setCellValueFactory(new PropertyValueFactory<Admins,String>("admin_firstname"));
-            //admintable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory("admin_lastname"));
-            //admintable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory("admin_login"));
-           // admintable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory("admin_email"));
+            this.AdminArrayList = adminsArrayList;
+            ObservableList<Admins> observableList = FXCollections.observableArrayList(admin_client.showAdmins());
+            admintable.setItems(observableList);
+            admintable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory("admin_id"));
+            admintable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory("admin_firstname"));
+            admintable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory("admin_lastname"));
+            admintable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory("admin_login"));
+            admintable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory("admin_email"));
         });
     }
 
