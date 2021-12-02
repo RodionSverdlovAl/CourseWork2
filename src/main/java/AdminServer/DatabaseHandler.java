@@ -105,9 +105,27 @@ public class DatabaseHandler extends Configs {
         }
     }
 
-    public void EditAdmin(String id){
+    public Admins Find_Admin_For_Edit(String id){
+        Admins admin = new Admins();
+        String findAdmin = "SELECT * FROM " + Const.USER_TABLE + " WHERE " + Const.ADMIN_ID + "='" + id + "'; ";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(findAdmin);
+            ResultSet resSet = prSt.executeQuery();
+            admin.setAdmin_firstname(resSet.getString("firstname"));
+            admin.setAdmin_lastname(resSet.getString("lastname"));
+            admin.setAdmin_login(resSet.getString("login"));
+            admin.setAdmin_password(resSet.getString("password"));
+            admin.setAdmin_email(resSet.getString("email"));
+            admin.setAdmin_id(resSet.getString("id"));
 
+
+            //prSt.executeUpdate();
+            System.out.println("id принятое на сервер = " + id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return admin;
     }
-
-
 }
