@@ -92,11 +92,11 @@ public class DatabaseHandler extends Configs {
     }
 
     public void DeleteAdmin(String id){
-        String delete = "DELETE * FROM " + Const.USER_TABLE + " WHERE " + Const.ADMIN_ID + "=?";
+        String delete = "DELETE FROM " + Const.USER_TABLE + " WHERE " + Const.ADMIN_ID + "='" + id + "'; ";
         try {
             PreparedStatement prSt = getDbConnection().prepareStatement(delete);
+            prSt.executeUpdate();
             System.out.println("id принятое на сервер = " + id);
-            prSt.setString(1,id);
             System.out.println("Админ успешно удален");
         } catch (SQLException e) {
             e.printStackTrace();
