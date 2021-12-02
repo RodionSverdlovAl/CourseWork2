@@ -59,6 +59,12 @@ public class AdminAppController {
     @FXML
     private TableColumn<Admins, String> viewsurname;
 
+    @FXML
+    private TextField idForDelete;
+
+    @FXML
+    private Button DeleteAdminButton;
+
     private ArrayList<Admins> AdminArrayList  = new ArrayList<>();
 
 
@@ -86,6 +92,12 @@ public class AdminAppController {
             admintable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory("admin_lastname"));
             admintable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory("admin_login"));
             admintable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory("admin_email"));
+        });
+
+        DeleteAdminButton.setOnAction(event ->{
+            String id = idForDelete.getText();
+            AdminClient adminClient = new AdminClient();
+            adminClient.DeleteAdmin(id);
         });
     }
 

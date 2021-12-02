@@ -74,6 +74,9 @@ public class AdminServer {
                                     }break;
                                     case "deleteAdmin":{
                                         System.out.println("Вы вошли в кейс удаление админов");
+                                        DatabaseHandler d = new DatabaseHandler();
+                                        String id =reader.readLine();
+                                        d.DeleteAdmin(id);
                                     }break;
                                 }
 

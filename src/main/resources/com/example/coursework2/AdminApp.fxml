@@ -91,8 +91,8 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #3B3E4A;">
                                        <children>
-                                          <TextField layoutX="278.0" layoutY="62.0" prefHeight="37.0" prefWidth="105.0" promptText="id" />
-                                          <Button layoutX="383.0" layoutY="62.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="76.0" text="Удалить" />
+                                          <TextField fx:id="idForDelete" layoutX="278.0" layoutY="62.0" prefHeight="37.0" prefWidth="105.0" promptText="id" />
+                                          <Button fx:id="DeleteAdminButton" layoutX="383.0" layoutY="62.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="76.0" text="Удалить" />
                                           <Label layoutX="58.0" layoutY="14.0" text="Введите id администратора которого хотите удалить из базы данных" textFill="WHITE">
                                              <font>
                                                 <Font name="Courier New" size="18.0" />
