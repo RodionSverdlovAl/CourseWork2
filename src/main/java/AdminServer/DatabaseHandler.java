@@ -66,7 +66,7 @@ public class DatabaseHandler extends Configs {
         return resSet;
     }
 
-    public ArrayList<Admins> getProducts() {
+    public ArrayList<Admins> getAdmins() {
         ArrayList<Admins> products = new ArrayList<Admins>();
         String select = "SELECT * FROM " + Const.USER_TABLE;
         try {
@@ -89,6 +89,19 @@ public class DatabaseHandler extends Configs {
             e.printStackTrace();
         }
         return products;
+    }
+
+    public void DeleteAdmin(String id){
+        String delete = "DELETE FROM" + Const.USER_TABLE + " WHERE " + Const.ADMIN_ID + "=?";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(delete);
+            prSt.setString(1,id);
+            System.out.println("Админ успешно удален");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -53,7 +53,7 @@ public class AdminServer {
                                     case "showadmins": {
                                         System.out.println("Вы вошли в кейс просмотр админов");
                                         DatabaseHandler d = new DatabaseHandler();
-                                        ArrayList<Admins> admins = d.getProducts();
+                                        ArrayList<Admins> admins = d.getAdmins();
                                         for(Admins p : admins){
                                             System.out.println(p.toString());
                                             System.out.println(p.getAdmin_firstname()+" "+p.getAdmin_lastname());
