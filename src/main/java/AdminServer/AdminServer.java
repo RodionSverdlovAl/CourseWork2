@@ -78,6 +78,10 @@ public class AdminServer {
                                         String id =reader.readLine();
                                         d.DeleteAdmin(id);
                                     }break;
+                                    case "EditAdmin":{
+                                        System.out.println("Вы вошли в кейс редактирование админов");
+
+                                    }break;
                                 }
 
                             }catch (IOException e){

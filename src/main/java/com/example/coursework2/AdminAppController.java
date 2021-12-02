@@ -9,13 +9,37 @@ import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AdminAppController {
+
+    @FXML
+    private TextField ChouseIdForEdit;
+
+    @FXML
+    private Button EditButton;
+
+    @FXML
+    private TextField EditEmail;
+
+    @FXML
+    private TextArea EditLog;
+
+    @FXML
+    private TextField EditLogin;
+
+    @FXML
+    private TextField EditName;
+
+    @FXML
+    private TextField EditPassword;
+
+    @FXML
+    private TextField EditSurname;
+
+    @FXML
+    private Button FindIDButton;
 
     @FXML
     private ResourceBundle resources;
@@ -99,6 +123,17 @@ public class AdminAppController {
             AdminClient adminClient = new AdminClient();
             adminClient.DeleteAdmin(id);
         });
+
+        EditButton.setOnAction(event ->{
+            String Name,Surname,Login,Password,Email,ID;
+            Name = EditName.getText();
+            Surname = EditSurname.getText();
+            Login = EditLogin.getText();
+            Password = EditPassword.getText();
+            Email = EditEmail.getText();
+            ID = idForDelete.getText();
+        });
+
     }
 
 }

@@ -106,15 +106,15 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #3B3E4A;">
                                        <children>
-                                          <TextField layoutX="89.0" layoutY="48.0" prefHeight="39.0" prefWidth="64.0" />
-                                          <Button layoutX="153.0" layoutY="48.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="80.0" text="найти" />
-                                          <TextArea layoutX="289.0" layoutY="48.0" prefHeight="39.0" prefWidth="491.0" />
-                                          <TextField layoutX="89.0" layoutY="161.0" prefHeight="45.0" prefWidth="438.0" promptText="Имя" />
-                                          <TextField layoutX="89.0" layoutY="220.0" prefHeight="45.0" prefWidth="438.0" promptText="Фамилия" />
-                                          <TextField layoutX="89.0" layoutY="281.0" prefHeight="45.0" prefWidth="438.0" promptText="Логин" />
-                                          <TextField layoutX="89.0" layoutY="341.0" prefHeight="45.0" prefWidth="438.0" promptText="электронная почта" />
-                                          <TextField layoutX="89.0" layoutY="401.0" prefHeight="45.0" prefWidth="438.0" promptText="пороль" />
-                                          <Button layoutX="89.0" layoutY="465.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="438.0" text="Редактировать" />
+                                          <TextField fx:id="ChouseIdForEdit" layoutX="89.0" layoutY="48.0" prefHeight="39.0" prefWidth="64.0" promptText="id" />
+                                          <Button fx:id="FindIDButton" layoutX="153.0" layoutY="48.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="80.0" text="найти" />
+                                          <TextArea fx:id="EditLog" layoutX="289.0" layoutY="48.0" prefHeight="39.0" prefWidth="491.0" promptText="Информация об администраторе" />
+                                          <TextField fx:id="EditName" layoutX="89.0" layoutY="161.0" prefHeight="45.0" prefWidth="438.0" promptText="Имя" />
+                                          <TextField fx:id="EditSurname" layoutX="89.0" layoutY="220.0" prefHeight="45.0" prefWidth="438.0" promptText="Фамилия" />
+                                          <TextField fx:id="EditLogin" layoutX="89.0" layoutY="281.0" prefHeight="45.0" prefWidth="438.0" promptText="Логин" />
+                                          <TextField fx:id="EditEmail" layoutX="89.0" layoutY="341.0" prefHeight="45.0" prefWidth="438.0" promptText="электронная почта" />
+                                          <TextField fx:id="EditPassword" layoutX="89.0" layoutY="401.0" prefHeight="45.0" prefWidth="438.0" promptText="пороль" />
+                                          <Button fx:id="EditButton" layoutX="89.0" layoutY="465.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="438.0" text="Редактировать" />
                                        </children>
                                     </AnchorPane>
                                  </content>

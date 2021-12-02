@@ -105,4 +105,9 @@ public class DatabaseHandler extends Configs {
         }
     }
 
+    public void EditAdmin(String id){
+
+    }
+
+
 }
