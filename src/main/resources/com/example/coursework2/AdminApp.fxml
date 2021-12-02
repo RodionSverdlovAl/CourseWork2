@@ -6,14 +6,15 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #071827;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coursework2.AdminAppController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="955.0" style="-fx-background-color: #071827;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coursework2.AdminAppController">
    <children>
-      <TabPane layoutX="180.0" prefHeight="800.0" prefWidth="822.0" style="-fx-background-color: #373D49; -fx-border-color: #3B3E4A;" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="180.0" prefHeight="710.0" prefWidth="822.0" style="-fx-background-color: #373D49; -fx-border-color: #3B3E4A;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Администраторы">
             <content>
@@ -86,6 +87,38 @@
                                        </children></AnchorPane>
                               </content>
                             </Tab>
+                              <Tab text="Удаление">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #3B3E4A;">
+                                       <children>
+                                          <TextField layoutX="278.0" layoutY="62.0" prefHeight="37.0" prefWidth="105.0" promptText="id" />
+                                          <Button layoutX="383.0" layoutY="62.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="76.0" text="Удалить" />
+                                          <Label layoutX="58.0" layoutY="14.0" text="Введите id администратора которого хотите удалить из базы данных" textFill="WHITE">
+                                             <font>
+                                                <Font name="Courier New" size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Редактирование">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #3B3E4A;">
+                                       <children>
+                                          <TextField layoutX="89.0" layoutY="48.0" prefHeight="39.0" prefWidth="64.0" />
+                                          <Button layoutX="153.0" layoutY="48.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="80.0" text="найти" />
+                                          <TextArea layoutX="289.0" layoutY="48.0" prefHeight="39.0" prefWidth="491.0" />
+                                          <TextField layoutX="89.0" layoutY="161.0" prefHeight="45.0" prefWidth="438.0" promptText="Имя" />
+                                          <TextField layoutX="89.0" layoutY="220.0" prefHeight="45.0" prefWidth="438.0" promptText="Фамилия" />
+                                          <TextField layoutX="89.0" layoutY="281.0" prefHeight="45.0" prefWidth="438.0" promptText="Логин" />
+                                          <TextField layoutX="89.0" layoutY="341.0" prefHeight="45.0" prefWidth="438.0" promptText="электронная почта" />
+                                          <TextField layoutX="89.0" layoutY="401.0" prefHeight="45.0" prefWidth="438.0" promptText="пороль" />
+                                          <Button layoutX="89.0" layoutY="465.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="438.0" text="Редактировать" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
                           </tabs>
                         </TabPane>
                      </children>
@@ -98,12 +131,24 @@
                      <children>
                         <TabPane layoutY="-1.0" prefHeight="766.0" prefWidth="822.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
-                            <Tab text="Untitled Tab 1">
+                            <Tab text="Просмотр всех пользователей">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="737.0" prefWidth="828.0" />
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="737.0" prefWidth="828.0">
+                                       <children>
+                                          <TableView layoutX="49.0" layoutY="38.0" prefHeight="561.0" prefWidth="709.0">
+                                            <columns>
+                                              <TableColumn prefWidth="125.0" text="Имя" />
+                                              <TableColumn prefWidth="128.0" text="Фамилия" />
+                                                <TableColumn prefWidth="100.0" text="Логин" />
+                                                <TableColumn prefWidth="115.0" text="Пороль" />
+                                                <TableColumn prefWidth="109.0" text="Страна" />
+                                                <TableColumn prefWidth="131.0" text="Email" />
+                                            </columns>
+                                          </TableView>
+                                       </children></AnchorPane>
                               </content>
                             </Tab>
-                            <Tab text="Untitled Tab 2">
+                            <Tab text="удаление пользователя">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                               </content>
@@ -120,16 +165,26 @@
                      <children>
                         <TabPane layoutX="-2.0" prefHeight="769.0" prefWidth="822.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
-                            <Tab text="Untitled Tab 1">
+                            <Tab text="Добавление работника">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="694.0" prefWidth="822.0" />
+                              </content>
+                            </Tab>
+                            <Tab text="Просмотр всего персонала">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                               </content>
                             </Tab>
-                            <Tab text="Untitled Tab 2">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                              </content>
-                            </Tab>
+                              <Tab text="Уволить работника">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                 </content>
+                              </Tab>
+                              <Tab text="Редактирование работника">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                 </content>
+                              </Tab>
                           </tabs>
                         </TabPane>
                      </children>

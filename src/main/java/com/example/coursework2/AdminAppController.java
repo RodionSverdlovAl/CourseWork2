@@ -71,28 +71,13 @@ public class AdminAppController {
             AdminClient admin_client = new AdminClient();
             admin_client.AddAdmin(AdminNameInput.getText(),AdminLastnamefield.getText(),
                     adminloginfield.getText(),adminpasswordfield.getText(),adminemailfield.getText());
-            //Администратор успешно зарегестрирован
-
         });
 
 
         uploadbutton.setOnAction(event->{
             AdminClient admin_client = new AdminClient();
             admin_client.showAdmins();
-            //System.out.println(admin_client.showAdmins().get(0).getAdmin_firstname());
             ArrayList<Admins> adminsArrayList = admin_client.showAdmins();
-
-
-            /*ObservableList<Admins> list = FXCollections.observableArrayList(admin_client.showAdmins());
-            System.out.println(list.get(3).getAdmin_email());
-
-
-            viewname.setCellValueFactory(new PropertyValueFactory<Admins, String>("admin_firstname"));
-            viewsurname.setCellValueFactory(new PropertyValueFactory<Admins, String>("admin_lastname"));
-            viewid.setCellValueFactory(new PropertyValueFactory<Admins, String>("admin_id"));
-            viewemail.setCellValueFactory(new PropertyValueFactory<Admins, String>("admin_email"));
-            admintable.setItems(list);*/
-
             this.AdminArrayList = adminsArrayList;
             ObservableList<Admins> observableList = FXCollections.observableArrayList(admin_client.showAdmins());
             admintable.setItems(observableList);

@@ -71,8 +71,9 @@ public class AdminServer {
                                         catch (IOException e) {
                                             e.printStackTrace();
                                         }
-
-
+                                    }break;
+                                    case "deleteAdmin":{
+                                        System.out.println("Вы вошли в кейс удаление админов");
                                     }break;
                                 }
 
