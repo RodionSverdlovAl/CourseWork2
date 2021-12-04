@@ -97,9 +97,6 @@ public class AdminClient {
             writer.newLine();
             writer.flush();
 
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
             log = "Не удалось подключится к серверу";
@@ -220,26 +217,23 @@ public class AdminClient {
         }
     }
 
-    void AddWorker(Worker worker){
+    void AddWorker(String name, String surname, String fathername, String departament, String position,String salary,String year){
         try(Socket clientSocket = new Socket("127.0.0.1",8081);
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
             BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
         {
-            writer.write("AddWorker");
-            writer.newLine();
+            writer.write("AddWorker");writer.newLine();
+            writer.write(name);writer.newLine();
+            writer.write(surname);writer.newLine();
+            writer.write(fathername);writer.newLine();
+            writer.write(departament);writer.newLine();
+            writer.write(position);writer.newLine();
+            writer.write(salary);writer.newLine();
+            writer.write(year);writer.newLine();
             writer.flush();
-            try( ObjectOutputStream objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream())) {
-                objectOutputStream.writeObject(worker); // отправляем работника на сервер
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-
         } catch (IOException e) {
             e.printStackTrace();
 
         }
     }
-
-
 }

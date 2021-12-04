@@ -175,7 +175,7 @@ public class AdminAppController {
 
         });
 
-        ObservableList<String> departament = FXCollections.observableArrayList("Разработки","Продаж","Рекламмы","Логистики","Производственный");
+        ObservableList<String> departament = FXCollections.observableArrayList("Разработки","Продаж","Рекламмы","Логистики","Производственный","Кунилингуса","Минета");
         workerdepartament.setItems(departament);
 
         ObservableList<String> year = FXCollections.observableArrayList("1970","1971","1972","1973",
@@ -197,7 +197,7 @@ public class AdminAppController {
             System.out.println("Зарплата = "+Salary);
             Worker worker = new Worker(Name,Surname,Fathername,Departament,Position,Year,Salary);
             AdminClient adminClient = new AdminClient();
-            adminClient.AddWorker(worker);
+            adminClient.AddWorker(Name,Surname,Fathername,Departament,Position,Salary,Year);
         });
     }
 

@@ -112,21 +112,16 @@ public class AdminServer {
                                     }break;
                                     case "AddWorker":{
                                         System.out.println("Вы вошли в кейс добавление работника");
-                                        Worker worker =new Worker();
-                                        try( ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());) {
-                                            try {
-                                                Object object = objectInputStream.readObject();
-                                                worker =  (Worker) object;
-                                                System.out.println(worker.toString());
-                                                DatabaseHandlerWorkers d = new DatabaseHandlerWorkers();
-                                                d.AddWorker(worker);
-
-                                            } catch (ClassNotFoundException e) {
-                                                e.printStackTrace();
-                                            }
-                                        } catch (IOException e) {
-                                            e.printStackTrace();
-                                        }
+                                        DatabaseHandlerWorkers d = new DatabaseHandlerWorkers();
+                                        String name = reader.readLine();
+                                        String surname = reader.readLine();
+                                        String fathername = reader.readLine();
+                                        String departament = reader.readLine();
+                                        String position = reader.readLine();
+                                        String salary = reader.readLine();
+                                        String year = reader.readLine();
+                                        Worker worker =new Worker(name,surname,fathername,departament,position,year,salary);
+                                        d.AddWorker(worker);
                                     }
                                 }
 
