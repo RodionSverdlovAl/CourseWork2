@@ -78,8 +78,26 @@ public class AdminServer {
                                         String id =reader.readLine();
                                         d.DeleteAdmin(id);
                                     }break;
+                                    case "FindAdmin":{
+                                        System.out.println("Вы вошли в кейс поиск администраторов");
+                                        DatabaseHandler d = new DatabaseHandler();
+                                        String id =reader.readLine();
+                                        Admins admin = d.Find_Admin_For_Edit(id); // достали нужного админа
+                                        System.out.println(admin.getAdmin_firstname()+" "+admin.getAdmin_lastname()+" "+admin.getAdmin_login()
+                                                +" "+admin.getAdmin_password()+" "+admin.getAdmin_email());
+                                        try {
+                                            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                                            objectOutputStream.writeObject(admin); // отправляем админа на клиент
+                                        }
+                                        catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+
+
+                                    }break;
                                     case "EditAdmin":{
                                         System.out.println("Вы вошли в кейс редактирование админов");
+
 
                                     }break;
                                 }

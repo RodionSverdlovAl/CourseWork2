@@ -124,6 +124,17 @@ public class AdminAppController {
             adminClient.DeleteAdmin(id);
         });
 
+        FindIDButton.setOnAction(event->{
+            String id = ChouseIdForEdit.getText();
+            AdminClient adminClient = new AdminClient();
+            Admins admin = new Admins();
+            admin = adminClient.FindAdmin(id);
+            EditLog.setText(admin.getAdmin_firstname()+" "+admin.getAdmin_lastname()+" "+admin.getAdmin_login()
+            +" "+admin.getAdmin_password()+" "+admin.getAdmin_email());
+
+
+        });
+
         EditButton.setOnAction(event ->{
             String Name,Surname,Login,Password,Email,ID;
             Name = EditName.getText();

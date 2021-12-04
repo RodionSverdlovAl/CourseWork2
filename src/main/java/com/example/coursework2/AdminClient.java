@@ -157,4 +157,56 @@ public class AdminClient {
 
         }
     }
+
+    Admins FindAdmin(String id){
+        try(Socket clientSocket = new Socket("127.0.0.1",8081);
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
+        {
+            writer.write("FindAdmin");
+            writer.newLine();
+            writer.write(id);
+            writer.newLine();
+            writer.flush();
+
+            Admins admin = new Admins();
+            try {
+                ObjectInputStream objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
+                try {
+                    Object object = objectInputStream.readObject();
+                    admin =  (Admins) object;
+                    System.out.println(admin.getAdmin_firstname());
+                    return admin;
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+        return null;
+    }
+
+    void EditAdmin(String id, String Name, String Surname, String Login, String Password, String Email){
+        try(Socket clientSocket = new Socket("127.0.0.1",8081);
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
+        {
+            writer.write("EditAdmin");
+            writer.newLine();
+            writer.write(id);
+            writer.newLine();
+            writer.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+    }
+
 }

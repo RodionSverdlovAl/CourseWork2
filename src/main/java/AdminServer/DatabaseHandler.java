@@ -107,19 +107,23 @@ public class DatabaseHandler extends Configs {
 
     public Admins Find_Admin_For_Edit(String id){
         Admins admin = new Admins();
-        String findAdmin = "SELECT * FROM " + Const.USER_TABLE + " WHERE " + Const.ADMIN_ID + "='" + id + "'; ";
+        String findAdmin = "SELECT * FROM " + Const.USER_TABLE + " WHERE "+Const.ADMIN_ID + "=?";
         try {
+
             PreparedStatement prSt = getDbConnection().prepareStatement(findAdmin);
+            prSt.setString(1,id);
             ResultSet resSet = prSt.executeQuery();
-            admin.setAdmin_firstname(resSet.getString("firstname"));
-            admin.setAdmin_lastname(resSet.getString("lastname"));
-            admin.setAdmin_login(resSet.getString("login"));
-            admin.setAdmin_password(resSet.getString("password"));
-            admin.setAdmin_email(resSet.getString("email"));
-            admin.setAdmin_id(resSet.getString("id"));
+            while (resSet.next()) {
+                Admins p = new Admins();
+                p.setAdmin_firstname(resSet.getString("firstname"));
+                p.setAdmin_lastname(resSet.getString("lastname"));
+                p.setAdmin_login(resSet.getString("login"));
+                p.setAdmin_password(resSet.getString("password"));
+                p.setAdmin_email(resSet.getString("email"));
+                p.setAdmin_id(resSet.getString("id"));
 
-
-            //prSt.executeUpdate();
+                admin = p;
+            }
             System.out.println("id принятое на сервер = " + id);
         } catch (SQLException e) {
             e.printStackTrace();
