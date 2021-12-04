@@ -228,6 +228,12 @@ public class AdminClient {
             writer.write("AddWorker");
             writer.newLine();
             writer.flush();
+            try( ObjectOutputStream objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream())) {
+                objectOutputStream.writeObject(worker); // отправляем работника на сервер
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

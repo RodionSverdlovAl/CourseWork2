@@ -196,6 +196,8 @@ public class AdminAppController {
             String Salary = workersalary.getValue().toString();
             System.out.println("Зарплата = "+Salary);
             Worker worker = new Worker(Name,Surname,Fathername,Departament,Position,Year,Salary);
+            AdminClient adminClient = new AdminClient();
+            adminClient.AddWorker(worker);
         });
     }
 

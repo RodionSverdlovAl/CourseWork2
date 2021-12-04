@@ -1,6 +1,8 @@
 package AdminServer;
 
-public class Worker {
+import java.io.Serializable;
+
+public class Worker implements Serializable {
     private String Worker_id;
     private String Worker_name;
     private String Worker_surname;
@@ -9,6 +11,10 @@ public class Worker {
     private String Worker_position;
     private String Worker_year;
     private String Worker_salary;
+
+    public Worker() {
+
+    }
 
 
     @Override

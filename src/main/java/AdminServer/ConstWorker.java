@@ -2,7 +2,7 @@ package AdminServer;
 
 public class ConstWorker {
 
-    public static final String WORKER_TABLE = "admins";
+    public static final String WORKER_TABLE = "workers";
 
     public static final String WORKER_ID = "id";
     public static final String WORKER_NAME = "name";

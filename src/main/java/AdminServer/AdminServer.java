@@ -111,7 +111,22 @@ public class AdminServer {
                                         //System.out.println(admin.getAdmin_firstname() + admin.getAdmin_lastname());
                                     }break;
                                     case "AddWorker":{
+                                        System.out.println("Вы вошли в кейс добавление работника");
+                                        Worker worker =new Worker();
+                                        try( ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());) {
+                                            try {
+                                                Object object = objectInputStream.readObject();
+                                                worker =  (Worker) object;
+                                                System.out.println(worker.toString());
+                                                DatabaseHandlerWorkers d = new DatabaseHandlerWorkers();
+                                                d.AddWorker(worker);
 
+                                            } catch (ClassNotFoundException e) {
+                                                e.printStackTrace();
+                                            }
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
                                     }
                                 }
 
