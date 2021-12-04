@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -167,7 +169,32 @@
                           <tabs>
                             <Tab text="Добавление работника">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="694.0" prefWidth="822.0" />
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="694.0" prefWidth="822.0">
+                                       <children>
+                                          <Label layoutX="51.0" layoutY="33.0" text="Добавление работника" textFill="WHITE">
+                                             <font>
+                                                <Font name="Courier New" size="30.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="workername" layoutX="51.0" layoutY="106.0" prefHeight="31.0" prefWidth="361.0" promptText="Имя" />
+                                          <TextField fx:id="workersurname" layoutX="51.0" layoutY="152.0" prefHeight="31.0" prefWidth="361.0" promptText="Фамилия" />
+                                          <TextField fx:id="workerfathername" layoutX="51.0" layoutY="196.0" prefHeight="31.0" prefWidth="361.0" promptText="Отчество" />
+                                          <ComboBox fx:id="workerdepartament" layoutX="439.0" layoutY="105.0" prefHeight="33.0" prefWidth="360.0" promptText="Выберите отдел" />
+                                          <Spinner fx:id="workersalary" layoutX="50.0" layoutY="280.0" prefHeight="31.0" prefWidth="363.0" />
+                                          <Label layoutX="51.0" layoutY="242.0" text=" почасовая зарплата в BYN" textFill="WHITE">
+                                             <font>
+                                                <Font name="Courier New" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="workerposition" layoutX="440.0" layoutY="151.0" prefHeight="33.0" prefWidth="359.0" promptText="Должность" />
+                                          <Label layoutX="450.0" layoutY="203.0" />
+                                          <ComboBox fx:id="workeryear" layoutX="440.0" layoutY="197.0" prefHeight="30.0" prefWidth="358.0" promptText="Укажите год рождения" />
+                                          <Button fx:id="workerAddButton" layoutX="232.0" layoutY="370.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="368.0" text="Добавить работника">
+                                             <font>
+                                                <Font name="Courier New Bold" size="15.0" />
+                                             </font>
+                                          </Button>
+                                       </children></AnchorPane>
                               </content>
                             </Tab>
                             <Tab text="Просмотр всего персонала">

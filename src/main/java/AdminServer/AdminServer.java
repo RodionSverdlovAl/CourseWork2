@@ -109,8 +109,6 @@ public class AdminServer {
                                         Admins admin = new Admins(Name, Surname,Login,Password,Email);
                                         d.EditAdmin(id,admin);
                                         //System.out.println(admin.getAdmin_firstname() + admin.getAdmin_lastname());
-
-
                                     }break;
                                 }
 

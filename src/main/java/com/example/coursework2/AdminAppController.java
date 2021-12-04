@@ -15,6 +15,30 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class AdminAppController {
 
     @FXML
+    private ComboBox<?> workerdepartament;
+
+    @FXML
+    private TextField workerfathername;
+
+    @FXML
+    private TextField workername;
+
+    @FXML
+    private TextField workerposition;
+
+    @FXML
+    private Spinner<?> workersalary;
+
+    @FXML
+    private TextField workersurname;
+
+    @FXML
+    private ComboBox<?> workeryear;
+
+    @FXML
+    private Button workerAddButton;
+
+    @FXML
     private TextField ChouseIdForEdit;
 
     @FXML
@@ -137,8 +161,6 @@ public class AdminAppController {
             EditLogin.setText(admin.getAdmin_login());
             EditPassword.setText(admin.getAdmin_password());
             EditEmail.setText(admin.getAdmin_email());
-
-
         });
 
         EditButton.setOnAction(event ->{
