@@ -110,6 +110,9 @@ public class AdminServer {
                                         d.EditAdmin(id,admin);
                                         //System.out.println(admin.getAdmin_firstname() + admin.getAdmin_lastname());
                                     }break;
+                                    case "AddWorker":{
+
+                                    }
                                 }
 
                             }catch (IOException e){

@@ -180,8 +180,8 @@
                                           <TextField fx:id="workersurname" layoutX="51.0" layoutY="152.0" prefHeight="31.0" prefWidth="361.0" promptText="Фамилия" />
                                           <TextField fx:id="workerfathername" layoutX="51.0" layoutY="196.0" prefHeight="31.0" prefWidth="361.0" promptText="Отчество" />
                                           <ComboBox fx:id="workerdepartament" layoutX="439.0" layoutY="105.0" prefHeight="33.0" prefWidth="360.0" promptText="Выберите отдел" />
-                                          <Spinner fx:id="workersalary" layoutX="50.0" layoutY="280.0" prefHeight="31.0" prefWidth="363.0" />
-                                          <Label layoutX="51.0" layoutY="242.0" text=" почасовая зарплата в BYN" textFill="WHITE">
+                                          <Spinner fx:id="workersalary" layoutX="346.0" layoutY="252.0" prefHeight="31.0" prefWidth="67.0" />
+                                          <Label layoutX="39.0" layoutY="256.0" text=" почасовая зарплата в BYN" textFill="WHITE">
                                              <font>
                                                 <Font name="Courier New" size="20.0" />
                                              </font>

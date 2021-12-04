@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import AdminServer.Admins;
-import javafx.beans.Observable;
+import AdminServer.Worker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,7 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class AdminAppController {
 
     @FXML
-    private ComboBox<?> workerdepartament;
+    private ComboBox<String> workerdepartament;
 
     @FXML
     private TextField workerfathername;
@@ -27,13 +27,13 @@ public class AdminAppController {
     private TextField workerposition;
 
     @FXML
-    private Spinner<?> workersalary;
-
+    private Spinner<Integer> workersalary;
+    SpinnerValueFactory<Integer> svf = new SpinnerValueFactory.IntegerSpinnerValueFactory(3,50,10);
     @FXML
     private TextField workersurname;
 
     @FXML
-    private ComboBox<?> workeryear;
+    private ComboBox<String> workeryear;
 
     @FXML
     private Button workerAddButton;
@@ -116,7 +116,6 @@ public class AdminAppController {
     private ArrayList<Admins> AdminArrayList  = new ArrayList<>();
 
 
-
     @FXML
     void initialize() {
 
@@ -176,6 +175,28 @@ public class AdminAppController {
 
         });
 
+        ObservableList<String> departament = FXCollections.observableArrayList("Разработки","Продаж","Рекламмы","Логистики","Производственный");
+        workerdepartament.setItems(departament);
+
+        ObservableList<String> year = FXCollections.observableArrayList("1970","1971","1972","1973",
+                "1974","1975","1976","1977","1978","1979","1980","1981","1982","1983","1984","1985","1986",
+                "1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999",
+                "2000","2001","2002","2003");
+        workeryear.setItems(year);
+
+        workersalary.setValueFactory(svf);
+
+        workerAddButton.setOnAction(event->{
+            String Name = workername.getText();
+            String Surname = workersurname.getText();
+            String Fathername = workerfathername.getText();
+            String Departament = workerdepartament.getSelectionModel().getSelectedItem().toString();
+            String Position = workerposition.getText();
+            String Year = workeryear.getSelectionModel().getSelectedItem().toString();
+            String Salary = workersalary.getValue().toString();
+            System.out.println("Зарплата = "+Salary);
+            Worker worker = new Worker(Name,Surname,Fathername,Departament,Position,Year,Salary);
+        });
     }
 
 }

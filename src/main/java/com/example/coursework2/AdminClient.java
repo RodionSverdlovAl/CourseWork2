@@ -1,6 +1,7 @@
 package com.example.coursework2;
 
 import AdminServer.Admins;
+import AdminServer.Worker;
 
 import java.io.*;
 import java.net.Socket;
@@ -218,5 +219,21 @@ public class AdminClient {
 
         }
     }
+
+    void AddWorker(Worker worker){
+        try(Socket clientSocket = new Socket("127.0.0.1",8081);
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
+        {
+            writer.write("AddWorker");
+            writer.newLine();
+            writer.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+    }
+
 
 }
