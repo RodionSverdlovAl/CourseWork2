@@ -121,7 +121,6 @@ public class DatabaseHandler extends Configs {
                 p.setAdmin_password(resSet.getString("password"));
                 p.setAdmin_email(resSet.getString("email"));
                 p.setAdmin_id(resSet.getString("id"));
-
                 admin = p;
             }
             System.out.println("id принятое на сервер = " + id);
@@ -132,4 +131,36 @@ public class DatabaseHandler extends Configs {
         }
         return admin;
     }
+
+    public void EditAdmin(String id, Admins admin){
+        try{
+            String update = "UPDATE " + Const.USER_TABLE +
+                    " SET " + Const.FIRST_NAME + "=?, " + Const.LAST_NAME + "=?, "
+                    + Const.LOGIN + "=?, " + Const.PASSWORD + "=?, " + Const.EMAIL + "=? " +
+                    " WHERE " + Const.ADMIN_ID + "=?";
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(update);
+
+            //System.out.println(admin.getAdmin_email());
+            //int port_ = Integer.parseInt(port.getText());
+            //Integer intid = Integer.parseInt(id);
+
+            System.out.println(id + " " + admin.toString());
+            preparedStatement.setString(1, admin.getAdmin_firstname());
+            preparedStatement.setString(2, admin.getAdmin_lastname());
+            preparedStatement.setString(3, admin.getAdmin_login());
+            preparedStatement.setString(4, admin.getAdmin_password());
+            preparedStatement.setString(5, admin.getAdmin_email());
+            preparedStatement.setInt(6, Integer.parseInt(id));
+            System.out.println("Admin otredacktirovan");
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 }

@@ -201,7 +201,19 @@ public class AdminClient {
             writer.newLine();
             writer.write(id);
             writer.newLine();
+            writer.write(Name);
+            writer.newLine();
+            writer.write(Surname);
+            writer.newLine();
+            writer.write(Login);
+            writer.newLine();
+            writer.write(Password);
+            writer.newLine();
+            writer.write(Email);
+            writer.newLine();
             writer.flush();
+
+
 
         } catch (IOException e) {
             e.printStackTrace();

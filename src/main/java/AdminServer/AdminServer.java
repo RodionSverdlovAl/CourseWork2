@@ -1,5 +1,7 @@
 package AdminServer;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -97,6 +99,16 @@ public class AdminServer {
                                     }break;
                                     case "EditAdmin":{
                                         System.out.println("Вы вошли в кейс редактирование админов");
+                                        DatabaseHandler d = new DatabaseHandler();
+                                        String id =reader.readLine();
+                                        String Name =reader.readLine();
+                                        String Surname =reader.readLine();
+                                        String Login =reader.readLine();
+                                        String Password =reader.readLine();
+                                        String Email =reader.readLine();
+                                        Admins admin = new Admins(Name, Surname,Login,Password,Email);
+                                        d.EditAdmin(id,admin);
+                                        //System.out.println(admin.getAdmin_firstname() + admin.getAdmin_lastname());
 
 
                                     }break;

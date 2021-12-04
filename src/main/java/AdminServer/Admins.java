@@ -70,4 +70,16 @@ public class Admins implements Serializable {
     public void setAdmin_email(String admin_email) {
         this.admin_email = admin_email;
     }
+
+    @Override
+    public String toString() {
+        return "Admins{" +
+                "admin_id='" + admin_id + '\'' +
+                ", admin_firstname='" + admin_firstname + '\'' +
+                ", admin_lastname='" + admin_lastname + '\'' +
+                ", admin_login='" + admin_login + '\'' +
+                ", admin_password='" + admin_password + '\'' +
+                ", admin_email='" + admin_email + '\'' +
+                '}';
+    }
 }

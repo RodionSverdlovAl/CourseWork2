@@ -129,8 +129,14 @@ public class AdminAppController {
             AdminClient adminClient = new AdminClient();
             Admins admin = new Admins();
             admin = adminClient.FindAdmin(id);
+
             EditLog.setText(admin.getAdmin_firstname()+" "+admin.getAdmin_lastname()+" "+admin.getAdmin_login()
             +" "+admin.getAdmin_password()+" "+admin.getAdmin_email());
+            EditName.setText(admin.getAdmin_firstname());
+            EditSurname.setText((admin.getAdmin_lastname()));
+            EditLogin.setText(admin.getAdmin_login());
+            EditPassword.setText(admin.getAdmin_password());
+            EditEmail.setText(admin.getAdmin_email());
 
 
         });
@@ -142,7 +148,10 @@ public class AdminAppController {
             Login = EditLogin.getText();
             Password = EditPassword.getText();
             Email = EditEmail.getText();
-            ID = idForDelete.getText();
+            ID = ChouseIdForEdit.getText();
+            AdminClient adminClient = new AdminClient();
+            adminClient.EditAdmin(ID,Name,Surname,Login,Password,Email);
+
         });
 
     }
