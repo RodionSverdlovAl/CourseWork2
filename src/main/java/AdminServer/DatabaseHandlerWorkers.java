@@ -77,14 +77,14 @@ public class DatabaseHandlerWorkers extends Configs {
             ResultSet resSet = prSt.executeQuery();
             while (resSet.next()) {
                 Worker w = new Worker();
-                w.setWorker_name(resSet.getString("Worker_name"));
-                w.setWorker_surname(resSet.getString("Worker_surname"));
-                w.setWorker_fathername(resSet.getString("Worker_fathername"));
-                w.setWorker_departament(resSet.getString("Worker_departament"));
-                w.setWorker_position(resSet.getString("Worker_position"));
-                w.setWorker_salary(resSet.getString("Worker_salary"));
-                w.setWorker_year(resSet.getString("Worker_year"));
-                w.setWorker_id(resSet.getString("Worker_id"));
+                w.setWorker_name(resSet.getString("name"));
+                w.setWorker_surname(resSet.getString("surname"));
+                w.setWorker_fathername(resSet.getString("fathername"));
+                w.setWorker_departament(resSet.getString("departament"));
+                w.setWorker_position(resSet.getString("position"));
+                w.setWorker_salary(resSet.getString("salary"));
+                w.setWorker_year(resSet.getString("year"));
+                w.setWorker_id(resSet.getString("id"));
                 worker = w;
             }
             System.out.println("id принятое на сервер = " + id);

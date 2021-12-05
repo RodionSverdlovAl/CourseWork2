@@ -190,6 +190,18 @@ public class AdminAppController {
             adminClient.DeleteAdmin(id);
         });
 
+        FindWorker_Button.setOnAction(event->{
+            String id = FindWorker_id.getText();
+            AdminClient adminClient = new AdminClient();
+            Worker worker;
+            worker = adminClient.FindWorker(id);
+
+            NameWorkerEdit.setText(worker.getWorker_name());
+            SurnameWorkerEdit.setText(worker.getWorker_surname());
+            FathernameWorkerEdit.setText(worker.getWorker_fathername());
+
+        });
+
         FindIDButton.setOnAction(event->{
             String id = ChouseIdForEdit.getText();
             AdminClient adminClient = new AdminClient();
@@ -260,9 +272,7 @@ public class AdminAppController {
             ShowWorkerTable.getColumns().get(7).setCellValueFactory(new PropertyValueFactory("Worker_id"));
         });
 
-        WorkerEditButton.setOnAction(event->{
 
-        });
 
     }
 

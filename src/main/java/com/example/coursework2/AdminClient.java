@@ -185,6 +185,38 @@ public class AdminClient {
         }
     }
 
+    Worker FindWorker(String id){
+        try(Socket clientSocket = new Socket("127.0.0.1",8081);
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
+        {
+            writer.write("FindWorker");
+            writer.newLine();
+            writer.write(id);
+            writer.newLine();
+            writer.flush();
+
+            Worker worker = new Worker();
+            try {
+                ObjectInputStream objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
+                try {
+                    Object object = objectInputStream.readObject();
+                    worker =  (Worker) object;
+                    System.out.println(worker.getWorker_name());
+                    return worker;
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+        return null;
+    }
+
     Admins FindAdmin(String id){
         try(Socket clientSocket = new Socket("127.0.0.1",8081);
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
@@ -210,8 +242,6 @@ public class AdminClient {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
         } catch (IOException e) {
             e.printStackTrace();
 

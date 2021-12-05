@@ -116,8 +116,19 @@ public class AdminServer {
                                         catch (IOException e) {
                                             e.printStackTrace();
                                         }
-
-
+                                    }break;
+                                    case"FindWorker":{
+                                        System.out.println("Вы вошли в кейс поиск работников");
+                                        DatabaseHandlerWorkers d = new DatabaseHandlerWorkers();
+                                        String id =reader.readLine();
+                                        Worker worker = d.Find_Worker_For_Edit(id);
+                                        try {
+                                            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                                            objectOutputStream.writeObject(worker); // отправляем работника на клиент
+                                        }
+                                        catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
                                     }break;
                                     case "EditAdmin":{
                                         System.out.println("Вы вошли в кейс редактирование админов");
