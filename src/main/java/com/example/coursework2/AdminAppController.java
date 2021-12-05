@@ -14,6 +14,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AdminAppController {
     @FXML
+    private TableView<Worker> Accounting_table;
+    @FXML
+    private TextField Accounting_id;
+    @FXML
     private Button Accounting_add_hour_button;
     @FXML
     private Button Accounting_add_rebuke_button;
@@ -26,9 +30,10 @@ public class AdminAppController {
     @FXML
     private Button Accounting_select_button;
     @FXML
-    private Spinner<?> Accounting_select_hour;
+    private Spinner<Integer> Accounting_select_hour;
+    SpinnerValueFactory<Integer> hour = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,12,1);
     @FXML
-    private Spinner<?> Accounting_select_procent;
+    private ComboBox<Integer> Accounting_select_procent;
     @FXML
     private TextArea Accounting_worker_info;
     @FXML
@@ -177,8 +182,13 @@ public class AdminAppController {
         workeryear.setItems(year);
         YearWorkerEdit.setItems(year);
 
+        ObservableList<Integer> bonus = FXCollections.observableArrayList(10,15,20,25,30,35,40,50);
+        Accounting_select_procent.setItems(bonus);
+
+
         workersalary.setValueFactory(svf);
         SalaryWorkerEdit.setValueFactory(svf);
+        Accounting_select_hour.setValueFactory(hour);
 
         FindWorker_Button.setOnAction(event->{
             String id = FindWorker_id.getText();
@@ -247,6 +257,10 @@ public class AdminAppController {
             Worker worker = new Worker(Name,Surname,Fathername,Departament,Position,Year,Salary);
             AdminClient adminClient = new AdminClient();
             adminClient.AddWorker(Name,Surname,Fathername,Departament,Position,Salary,Year);
+            workername.clear();
+            workersurname.clear();
+            workerfathername.clear();
+            workerposition.clear();
         });
 
         ShowWorkersButton.setOnAction(event->{
@@ -265,5 +279,24 @@ public class AdminAppController {
             ShowWorkerTable.getColumns().get(6).setCellValueFactory(new PropertyValueFactory("Worker_year"));
             ShowWorkerTable.getColumns().get(7).setCellValueFactory(new PropertyValueFactory("Worker_id"));
         });
+
+        Accounting_select_button.setOnAction(event->{
+            String id = Accounting_id.getText();
+            AdminClient adminClient = new AdminClient();
+            Worker worker;
+            worker = adminClient.FindWorker(id);
+
+            ArrayList<Worker> workerArrayList = new ArrayList<>();
+            workerArrayList.add(worker);
+            this.WorkerArrayList = workerArrayList;
+            ObservableList<Worker> observableList = FXCollections.observableArrayList(WorkerArrayList);
+            Accounting_table.setItems(observableList);
+            Accounting_table.getColumns().get(0).setCellValueFactory(new PropertyValueFactory("Worker_name"));
+            Accounting_table.getColumns().get(1).setCellValueFactory(new PropertyValueFactory("Worker_surname"));
+            Accounting_table.getColumns().get(2).setCellValueFactory(new PropertyValueFactory("Worker_departament"));
+            Accounting_table.getColumns().get(3).setCellValueFactory(new PropertyValueFactory("Worker_position"));
+
+        });
+
     }
 }
