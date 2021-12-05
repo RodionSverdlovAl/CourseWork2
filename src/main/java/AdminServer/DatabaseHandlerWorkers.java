@@ -96,6 +96,29 @@ public class DatabaseHandlerWorkers extends Configs {
         return worker;
     }
 
+    public void EditWorker(String id, Worker worker){
+        try{
+            String update = "UPDATE " + ConstWorker.WORKER_TABLE +
+                    " SET " + ConstWorker.WORKER_NAME + "=?, " + ConstWorker.WORKER_SURNAME + "=?, "
+                    + ConstWorker.WORKER_FATHERNAME + "=?, " + ConstWorker.WORKER_DEPARTAMENT + "=?, "+ConstWorker.WORKER_POSITION + "=?, " + ConstWorker.WORKER_SALARY + "=?, "+ConstWorker.WORKER_YEAR + "=? " +
+                    " WHERE " + ConstWorker.WORKER_ID + "=?";
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(update);
+            System.out.println(id + " " + worker.toString());
 
-
+            preparedStatement.setString(1, worker.getWorker_name());
+            preparedStatement.setString(2, worker.getWorker_surname());
+            preparedStatement.setString(3, worker.getWorker_fathername());
+            preparedStatement.setString(4, worker.getWorker_departament());
+            preparedStatement.setString(5, worker.getWorker_position());
+            preparedStatement.setString(6, worker.getWorker_salary());
+            preparedStatement.setString(7, worker.getWorker_year());
+            preparedStatement.setInt(8, Integer.parseInt(id));
+            System.out.println("Worker otredacktirovan");
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }

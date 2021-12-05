@@ -249,6 +249,28 @@ public class AdminClient {
         return null;
     }
 
+    void EditWorker(String id, String Name, String Surname, String Fathername,
+                    String Departament,String Position, String Salary, String Year)
+    {
+        try(Socket clientSocket = new Socket("127.0.0.1",8081);
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
+        {
+            writer.write("EditWorker"); writer.newLine();
+            writer.write(id); writer.newLine();
+            writer.write(Name); writer.newLine();
+            writer.write(Surname); writer.newLine();
+            writer.write(Fathername); writer.newLine();
+            writer.write(Departament); writer.newLine();
+            writer.write(Position); writer.newLine();
+            writer.write(Salary); writer.newLine();
+            writer.write(Year); writer.newLine();
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     void EditAdmin(String id, String Name, String Surname, String Login, String Password, String Email){
         try(Socket clientSocket = new Socket("127.0.0.1",8081);
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));

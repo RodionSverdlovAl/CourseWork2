@@ -234,16 +234,30 @@ public class AdminAppController {
             ID = ChouseIdForEdit.getText();
             AdminClient adminClient = new AdminClient();
             adminClient.EditAdmin(ID,Name,Surname,Login,Password,Email);
+        });
 
+        WorkerEditButton.setOnAction(event->{
+            String Name,Surname,Fathername,Departament,Position,Salary,Year;
+            Name = NameWorkerEdit.getText();
+            Surname = SurnameWorkerEdit.getText();
+            Fathername = FathernameWorkerEdit.getText();
+            Departament = DepartamentWorkerEdit.getSelectionModel().getSelectedItem();
+            Position = PositionWorkerEdit.getText();
+            Year = YearWorkerEdit.getSelectionModel().getSelectedItem();
+            Salary = SalaryWorkerEdit.getValue().toString();
+            String ID = FindWorker_id.getText();
+            System.out.println(ID+Name + Surname +Fathername+Departament+Position+Year+Salary);
+            AdminClient adminClient = new AdminClient();
+            adminClient.EditWorker(ID,Name,Surname,Fathername,Departament,Position,Salary,Year);
         });
 
         workerAddButton.setOnAction(event->{
             String Name = workername.getText();
             String Surname = workersurname.getText();
             String Fathername = workerfathername.getText();
-            String Departament = workerdepartament.getSelectionModel().getSelectedItem().toString();
+            String Departament = workerdepartament.getSelectionModel().getSelectedItem();
             String Position = workerposition.getText();
-            String Year = workeryear.getSelectionModel().getSelectedItem().toString();
+            String Year = workeryear.getSelectionModel().getSelectedItem();
             String Salary = workersalary.getValue().toString();
             System.out.println("Зарплата = "+Salary);
             Worker worker = new Worker(Name,Surname,Fathername,Departament,Position,Year,Salary);

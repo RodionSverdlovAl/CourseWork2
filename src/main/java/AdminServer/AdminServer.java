@@ -130,6 +130,20 @@ public class AdminServer {
                                             e.printStackTrace();
                                         }
                                     }break;
+                                    case "EditWorker":{
+                                        System.out.println("Вы вошли в кейс редактирование Работников");
+                                        DatabaseHandlerWorkers d = new DatabaseHandlerWorkers();
+                                        String id = reader.readLine();
+                                        String Name = reader.readLine();
+                                        String Surname = reader.readLine();
+                                        String Fathername = reader.readLine();
+                                        String Departament = reader.readLine();
+                                        String Position = reader.readLine();
+                                        String Salary = reader.readLine();
+                                        String Year = reader.readLine();
+                                        Worker worker = new Worker(Name,Surname,Fathername,Departament,Position,Year,Salary);
+                                        d.EditWorker(id,worker);
+                                    }break;
                                     case "EditAdmin":{
                                         System.out.println("Вы вошли в кейс редактирование админов");
                                         DatabaseHandler d = new DatabaseHandler();
@@ -141,7 +155,6 @@ public class AdminServer {
                                         String Email =reader.readLine();
                                         Admins admin = new Admins(Name, Surname,Login,Password,Email);
                                         d.EditAdmin(id,admin);
-                                        //System.out.println(admin.getAdmin_firstname() + admin.getAdmin_lastname());
                                     }break;
                                     case "AddWorker":{
                                         System.out.println("Вы вошли в кейс добавление работника");
