@@ -52,6 +52,28 @@ public class AdminServer {
                                         dbHandler.signUpAdmin(admin);
                                         System.out.println(name+surname+login+password+email);
                                     }break;
+                                    case "ShowWorkers":{
+                                        System.out.println("Вы вошли в кейс просмотр Работников");
+                                        DatabaseHandlerWorkers d = new DatabaseHandlerWorkers();
+                                        ArrayList<Worker> workers = d.getWorker();
+                                        /*for(Admins p : admins){
+                                            System.out.println(p.toString());
+                                            System.out.println(p.getAdmin_firstname()+" "+p.getAdmin_lastname());
+                                        }*/
+                                        //////////////////////////////////////////////
+                                        ArrayList<Worker> arrayList =  new ArrayList<Worker>();
+                                        for(Worker p : workers){
+                                            System.out.println(p.toString());
+                                            arrayList.add(p);
+                                        }
+                                        try {
+                                            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                                            objectOutputStream.writeObject(arrayList);
+                                        }
+                                        catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }break;
                                     case "showadmins": {
                                         System.out.println("Вы вошли в кейс просмотр админов");
                                         DatabaseHandler d = new DatabaseHandler();

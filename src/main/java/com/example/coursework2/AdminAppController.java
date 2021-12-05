@@ -113,7 +113,14 @@ public class AdminAppController {
     @FXML
     private Button DeleteAdminButton;
 
+    @FXML
+    private TableView<Worker> ShowWorkerTable;
+
+    @FXML
+    private Button ShowWorkersButton;
+
     private ArrayList<Admins> AdminArrayList  = new ArrayList<>();
+    private ArrayList<Worker> WorkerArrayList  = new ArrayList<>();
 
 
     @FXML
@@ -198,6 +205,23 @@ public class AdminAppController {
             Worker worker = new Worker(Name,Surname,Fathername,Departament,Position,Year,Salary);
             AdminClient adminClient = new AdminClient();
             adminClient.AddWorker(Name,Surname,Fathername,Departament,Position,Salary,Year);
+        });
+
+        ShowWorkersButton.setOnAction(event->{
+            AdminClient admin_client = new AdminClient();
+            admin_client.showWorkers();
+            ArrayList<Worker> workerArrayList = admin_client.showWorkers();
+            this.WorkerArrayList = workerArrayList;
+            ObservableList<Worker> observableList = FXCollections.observableArrayList(admin_client.showWorkers());
+            ShowWorkerTable.setItems(observableList);
+            ShowWorkerTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory("Worker_name"));
+            ShowWorkerTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory("Worker_surname"));
+            ShowWorkerTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory("Worker_fathername"));
+            ShowWorkerTable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory("Worker_departament"));
+            ShowWorkerTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory("Worker_position"));
+            ShowWorkerTable.getColumns().get(5).setCellValueFactory(new PropertyValueFactory("Worker_salary"));
+            ShowWorkerTable.getColumns().get(6).setCellValueFactory(new PropertyValueFactory("Worker_year"));
+            ShowWorkerTable.getColumns().get(7).setCellValueFactory(new PropertyValueFactory("Worker_id"));
         });
     }
 

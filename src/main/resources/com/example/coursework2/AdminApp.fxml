@@ -199,7 +199,22 @@
                             </Tab>
                             <Tab text="Просмотр всего персонала">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="ShowWorkerTable" layoutX="18.0" layoutY="34.0" prefHeight="498.0" prefWidth="788.0">
+                                            <columns>
+                                              <TableColumn prefWidth="102.0" text="Имя" />
+                                              <TableColumn prefWidth="118.0" text="Фамилия" />
+                                                <TableColumn prefWidth="119.0" text="Отчество" />
+                                                <TableColumn prefWidth="123.0" text="Отдел" />
+                                                <TableColumn prefWidth="123.0" text="Должность" />
+                                                <TableColumn prefWidth="62.0" text="Зарплата" />
+                                                <TableColumn prefWidth="88.0" text="год рождения" />
+                                                <TableColumn prefWidth="48.0" text="id" />
+                                            </columns>
+                                          </TableView>
+                                          <Button fx:id="ShowWorkersButton" layoutX="18.0" layoutY="544.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="221.0" text="Обновить" />
+                                       </children></AnchorPane>
                               </content>
                             </Tab>
                               <Tab text="Уволить работника">
