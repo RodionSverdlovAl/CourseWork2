@@ -85,16 +85,11 @@ public class AdminClient {
             writer.newLine();
 
             // отправляем имя фамилию логин пороль и емаил на сервер
-            writer.write(name);
-            writer.newLine();
-            writer.write(surname);
-            writer.newLine();
-            writer.write(login);
-            writer.newLine();
-            writer.write(password);
-            writer.newLine();
-            writer.write(email);
-            writer.newLine();
+            writer.write(name);writer.newLine();
+            writer.write(surname);writer.newLine();
+            writer.write(login);writer.newLine();
+            writer.write(password);writer.newLine();
+            writer.write(email);writer.newLine();
             writer.flush();
 
         } catch (IOException e) {
@@ -169,15 +164,25 @@ public class AdminClient {
         return null;
     }
 
+    void DeleteWorker(String id){
+        try(Socket clientSocket = new Socket("127.0.0.1",8081);
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
+        {
+            writer.write("deleteWorker");writer.newLine();
+            writer.write(id);writer.newLine();writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     void DeleteAdmin(String id){ // просто передаю id на сервак
         try(Socket clientSocket = new Socket("127.0.0.1",8081);
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
             BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
         {
-            writer.write("deleteAdmin");
-            writer.newLine();
-            writer.write(id);
-            writer.newLine();
+            writer.write("deleteAdmin");writer.newLine();
+            writer.write(id);writer.newLine();
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
@@ -190,10 +195,8 @@ public class AdminClient {
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
             BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
         {
-            writer.write("FindWorker");
-            writer.newLine();
-            writer.write(id);
-            writer.newLine();
+            writer.write("FindWorker");writer.newLine();
+            writer.write(id);writer.newLine();
             writer.flush();
 
             Worker worker = new Worker();
@@ -222,10 +225,8 @@ public class AdminClient {
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
             BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
         {
-            writer.write("FindAdmin");
-            writer.newLine();
-            writer.write(id);
-            writer.newLine();
+            writer.write("FindAdmin");writer.newLine();
+            writer.write(id);writer.newLine();
             writer.flush();
 
             Admins admin = new Admins();
@@ -276,20 +277,13 @@ public class AdminClient {
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
             BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
         {
-            writer.write("EditAdmin");
-            writer.newLine();
-            writer.write(id);
-            writer.newLine();
-            writer.write(Name);
-            writer.newLine();
-            writer.write(Surname);
-            writer.newLine();
-            writer.write(Login);
-            writer.newLine();
-            writer.write(Password);
-            writer.newLine();
-            writer.write(Email);
-            writer.newLine();
+            writer.write("EditAdmin");writer.newLine();
+            writer.write(id);writer.newLine();
+            writer.write(Name);writer.newLine();
+            writer.write(Surname);writer.newLine();
+            writer.write(Login);writer.newLine();
+            writer.write(Password);writer.newLine();
+            writer.write(Email);writer.newLine();
             writer.flush();
 
         } catch (IOException e) {

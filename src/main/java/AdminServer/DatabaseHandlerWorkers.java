@@ -121,4 +121,19 @@ public class DatabaseHandlerWorkers extends Configs {
             e.printStackTrace();
         }
     }
+
+    public void DeleteWorker(String id){
+        String delete = "DELETE FROM " + ConstWorker.WORKER_TABLE + " WHERE " + ConstWorker.WORKER_ID + "='" + id + "'; ";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(delete);
+            prSt.executeUpdate();
+            System.out.println("id принятое на сервер = " + id);
+            System.out.println("Работник успешно удален");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

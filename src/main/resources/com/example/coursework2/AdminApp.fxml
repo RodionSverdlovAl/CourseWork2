@@ -213,15 +213,12 @@
                                                 <TableColumn prefWidth="48.0" text="id" />
                                             </columns>
                                           </TableView>
-                                          <Button fx:id="ShowWorkersButton" layoutX="18.0" layoutY="544.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="221.0" text="Обновить" />
+                                          <Button fx:id="ShowWorkersButton" layoutX="18.0" layoutY="544.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="221.0" text="Обновить" />
+                                          <TextField fx:id="ID_FOR_DELETE_WORKER" layoutX="499.0" layoutY="544.0" prefHeight="30.0" prefWidth="149.0" promptText="Введите id" />
+                                          <Button fx:id="DELETE_WORKER_BUTTON" layoutX="350.0" layoutY="544.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="149.0" text="Удалить из списка" />
                                        </children></AnchorPane>
                               </content>
                             </Tab>
-                              <Tab text="Уволить работника">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                 </content>
-                              </Tab>
                               <Tab text="Редактирование работника">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -262,6 +259,114 @@
                      </children>
                   </AnchorPane>
                </content>
+            </Tab>
+            <Tab text="Вакансии">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane prefHeight="681.0" prefWidth="822.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Добавить вакансию">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField layoutX="40.0" layoutY="44.0" prefHeight="45.0" prefWidth="290.0" promptText="Должность" />
+                                          <TextArea layoutX="40.0" layoutY="226.0" prefHeight="115.0" prefWidth="291.0" promptText="Описание вакансии (требования)" />
+                                          <ComboBox layoutX="40.0" layoutY="106.0" prefHeight="41.0" prefWidth="290.0" promptText="Опыт работы" />
+                                          <Spinner layoutX="40.0" layoutY="166.0" prefHeight="44.0" prefWidth="70.0" />
+                                          <Label layoutX="122.0" layoutY="166.0" prefHeight="44.0" prefWidth="205.0" text="почасовая зарплата BYN" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="40.0" layoutY="363.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="291.0" text="Добавить" />
+                                       </children></AnchorPane>
+                              </content>
+                            </Tab>
+                              <Tab text="посмотреть вакансии">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView layoutX="11.0" layoutY="14.0" prefHeight="435.0" prefWidth="799.0">
+                                            <columns>
+                                              <TableColumn prefWidth="86.0" text="Должность" />
+                                              <TableColumn prefWidth="51.0" text="Опыт" />
+                                                <TableColumn prefWidth="51.0" text="ЗП" />
+                                                <TableColumn prefWidth="570.0" text="Требования" />
+                                                <TableColumn minWidth="0.0" prefWidth="40.0" text="id" />
+                                            </columns>
+                                          </TableView>
+                                          <Button layoutX="14.0" layoutY="464.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="213.0" text="Обновить" />
+                                          <Button layoutX="252.0" layoutY="464.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="213.0" text="Удалить вакансию" />
+                                          <TextField layoutX="465.0" layoutY="464.0" prefHeight="38.0" prefWidth="84.0" promptText="id" />
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </Tab>
+                              <Tab text="отклики на вакансию">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView layoutX="14.0" layoutY="14.0" prefHeight="615.0" prefWidth="577.0">
+                                            <columns>
+                                              <TableColumn prefWidth="117.0" text="Имя" />
+                                              <TableColumn prefWidth="100.0" text="Отчество" />
+                                                <TableColumn prefWidth="181.0" text="телефон" />
+                                                <TableColumn prefWidth="100.0" text="Должность" />
+                                                <TableColumn prefWidth="78.0" text="id Вакансии" />
+                                            </columns>
+                                          </TableView>
+                                          <Button layoutX="606.0" layoutY="14.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="193.0" text="Обновить" />
+                                          <Button layoutX="606.0" layoutY="74.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="102.0" text="удалить" />
+                                          <TextField layoutX="715.0" layoutY="73.0" prefHeight="49.0" prefWidth="83.0" promptText="id" />
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Учет деятельности работника">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="21.0" layoutY="14.0" text="Добавление отработанных часов" textFill="WHITE">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="33.0" layoutY="67.0" prefHeight="37.0" prefWidth="51.0" promptText="id" />
+                        <Button fx:id="Accounting_select_button" layoutX="84.0" layoutY="67.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="63.0" text="выбрать" />
+                        <Label layoutX="33.0" layoutY="45.0" text="Введите id работника которому хотите добавить часы" textFill="WHITE" />
+                        <TextArea fx:id="Accounting_worker_info" layoutX="165.0" layoutY="67.0" prefHeight="38.0" prefWidth="399.0" promptText="Работник не выбран" />
+                        <Spinner fx:id="Accounting_select_hour" layoutX="37.0" layoutY="135.0" prefHeight="31.0" prefWidth="95.0" />
+                        <Button fx:id="Accounting_add_hour_button" layoutX="147.0" layoutY="135.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="158.0" text="добавить часы" />
+                        <Button fx:id="Accounting_bonus_button" layoutX="321.0" layoutY="135.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="123.0" text="Премировать" />
+                        <Label layoutX="37.0" layoutY="118.0" text="Добавьте часы работнику" textFill="WHITE" />
+                        <Button fx:id="Accounting_add_rebuke_button" layoutX="244.0" layoutY="182.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="301.0" text="Назначить дисциплинарное взыскание" />
+                        <TextArea fx:id="Accounting_logs_area" layoutX="32.0" layoutY="182.0" prefHeight="135.0" prefWidth="200.0" />
+                        <Button fx:id="Accounting_delete_rebuke_button" layoutX="244.0" layoutY="226.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="301.0" text="Снять дисциплинарное взыскание" />
+                        <Spinner fx:id="Accounting_select_procent" layoutX="450.0" layoutY="135.0" prefHeight="31.0" prefWidth="95.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Анализ деятельности персонала">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView layoutX="26.0" layoutY="14.0" prefHeight="200.0" prefWidth="649.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="ФИО" />
+                            <TableColumn prefWidth="573.0" text="C2" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
             </Tab>
         </tabs>
       </TabPane>

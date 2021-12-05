@@ -13,139 +13,117 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AdminAppController {
-
+    @FXML
+    private Button Accounting_add_hour_button;
+    @FXML
+    private Button Accounting_add_rebuke_button;
+    @FXML
+    private Button Accounting_bonus_button;
+    @FXML
+    private Button Accounting_delete_rebuke_button;
+    @FXML
+    private TextArea Accounting_logs_area;
+    @FXML
+    private Button Accounting_select_button;
+    @FXML
+    private Spinner<?> Accounting_select_hour;
+    @FXML
+    private Spinner<?> Accounting_select_procent;
+    @FXML
+    private TextArea Accounting_worker_info;
     @FXML
     private ComboBox<String> workerdepartament;
-
     @FXML
     private TextField workerfathername;
-
     @FXML
     private TextField workername;
-
     @FXML
     private TextField workerposition;
-
     @FXML
     private Spinner<Integer> workersalary;
     SpinnerValueFactory<Integer> svf = new SpinnerValueFactory.IntegerSpinnerValueFactory(3,50,10);
     @FXML
     private TextField workersurname;
-
     @FXML
     private ComboBox<String> workeryear;
-
     @FXML
     private Button workerAddButton;
-
     @FXML
     private TextField ChouseIdForEdit;
-
     @FXML
     private Button EditButton;
-
     @FXML
     private TextField EditEmail;
-
     @FXML
     private TextArea EditLog;
-
     @FXML
     private TextField EditLogin;
-
     @FXML
     private TextField EditName;
-
     @FXML
     private TextField EditPassword;
-
     @FXML
     private TextField EditSurname;
-
     @FXML
     private Button FindIDButton;
-
     @FXML
     private ResourceBundle resources;
-
     @FXML
     private URL location;
-
     @FXML
     private TextField AdminLastnamefield;
-
     @FXML
     private TextField AdminNameInput;
-
     @FXML
     private Button SignUpAdminButton;
-
     @FXML
     private TextField adminemailfield;
-
     @FXML
     private TextField adminloginfield;
-
     @FXML
     private TextField adminpasswordfield;
-
     @FXML
     private TableView<Admins> admintable;
-
     @FXML
     private Button uploadbutton;
-
     @FXML
     private TableColumn<Admins, String> viewemail;
-
     @FXML
     private TableColumn<Admins, String> viewid;
-
     @FXML
     private TableColumn<Admins, String> viewname;
-
     @FXML
     private TableColumn<Admins, String> viewsurname;
-
     @FXML
     private TextField idForDelete;
-
     @FXML
     private Button DeleteAdminButton;
-
     @FXML
     private TableView<Worker> ShowWorkerTable;
-
     @FXML
     private Button ShowWorkersButton;
-
     @FXML
     private Button FindWorker_Button;
-
     @FXML
     private TextField FindWorker_id;
-
     @FXML
     private TextField NameWorkerEdit;
-
     @FXML
     private TextField PositionWorkerEdit;
-
     @FXML
     private TextField FathernameWorkerEdit;
-
     @FXML
     private ComboBox<String> DepartamentWorkerEdit;
-
     @FXML
     private TextField SurnameWorkerEdit;
-
     @FXML
     private Button WorkerEditButton;
-
     @FXML
     private ComboBox<String> YearWorkerEdit;
-
+    @FXML
+    private Button DELETE_WORKER_BUTTON;
+    @FXML
+    private TextField ID_FOR_DELETE_WORKER;
     @FXML
     private Spinner<Integer> SalaryWorkerEdit;
 
@@ -174,6 +152,12 @@ public class AdminAppController {
             admintable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory("admin_lastname"));
             admintable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory("admin_login"));
             admintable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory("admin_email"));
+        });
+
+        DELETE_WORKER_BUTTON.setOnAction(event->{
+            String id  = ID_FOR_DELETE_WORKER.getText();
+            AdminClient adminClient = new AdminClient();
+            adminClient.DeleteWorker(id);
         });
 
         DeleteAdminButton.setOnAction(event ->{

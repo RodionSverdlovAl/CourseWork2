@@ -96,6 +96,12 @@ public class AdminServer {
                                             e.printStackTrace();
                                         }
                                     }break;
+                                    case "deleteWorker":{
+                                        System.out.println("Вы вошли в кейс удаление workerov");
+                                        DatabaseHandlerWorkers d = new DatabaseHandlerWorkers();
+                                        String id = reader.readLine();
+                                        d.DeleteWorker(id);
+                                    }break;
                                     case "deleteAdmin":{
                                         System.out.println("Вы вошли в кейс удаление админов");
                                         DatabaseHandler d = new DatabaseHandler();
