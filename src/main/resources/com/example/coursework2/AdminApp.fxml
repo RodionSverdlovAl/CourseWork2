@@ -224,7 +224,37 @@
                               </Tab>
                               <Tab text="Редактирование работника">
                                  <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField fx:id="FindWorker_id" layoutX="236.0" layoutY="68.0" prefHeight="40.0" prefWidth="79.0" promptText="id" />
+                                          <Button fx:id="FindWorker_Button" layoutX="315.0" layoutY="68.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="267.0" text="Найти">
+                                             <font>
+                                                <Font name="Courier New" size="16.0" />
+                                             </font>
+                                          </Button>
+                                          <TextField fx:id="NameWorkerEdit" layoutX="236.0" layoutY="157.0" prefHeight="38.0" prefWidth="350.0" promptText="Имя" />
+                                          <TextField fx:id="SurnameWorkerEdit" layoutX="236.0" layoutY="203.0" prefHeight="38.0" prefWidth="349.0" promptText="Фамилия" />
+                                          <TextField fx:id="FathernameWorkerEdit" layoutX="236.0" layoutY="249.0" prefHeight="38.0" prefWidth="349.0" promptText="Отчество" />
+                                          <ComboBox fx:id="DepartamentWorkerEdit" layoutX="236.0" layoutY="297.0" prefHeight="37.0" prefWidth="351.0" promptText="Отдел" />
+                                          <TextField fx:id="PositionWorkerEdit" layoutX="236.0" layoutY="345.0" prefHeight="38.0" prefWidth="353.0" promptText="Должность" />
+                                          <ComboBox fx:id="YearWorkerEdit" layoutX="236.0" layoutY="391.0" prefHeight="37.0" prefWidth="352.0" promptText="Год рождения" />
+                                          <Spinner fx:id="SalaryWorkerEdit" layoutX="490.0" layoutY="438.0" prefHeight="36.0" prefWidth="96.0" />
+                                          <Label layoutX="236.0" layoutY="437.0" prefHeight="37.0" prefWidth="249.0" text="Почасовая зарплата BYN" textFill="WHITE">
+                                             <font>
+                                                <Font name="Courier New Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="WorkerEditButton" layoutX="236.0" layoutY="494.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="352.0" text="Редактировать">
+                                             <font>
+                                                <Font name="Courier New" size="18.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="236.0" layoutY="563.0" prefHeight="39.0" prefWidth="353.0" text="Редактирование работника" textFill="WHITE">
+                                             <font>
+                                                <Font name="Courier New" size="24.0" />
+                                             </font>
+                                          </Label>
+                                       </children></AnchorPane>
                                  </content>
                               </Tab>
                           </tabs>

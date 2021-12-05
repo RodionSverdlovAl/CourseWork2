@@ -119,6 +119,42 @@ public class AdminAppController {
     @FXML
     private Button ShowWorkersButton;
 
+
+
+    @FXML
+    private Button FindWorker_Button;
+
+    @FXML
+    private TextField FindWorker_id;
+
+    @FXML
+    private TextField NameWorkerEdit;
+
+    @FXML
+    private TextField PositionWorkerEdit;
+
+    @FXML
+    private TextField FathernameWorkerEdit;
+
+    @FXML
+    private ComboBox<?> DepartamentWorkerEdit;
+
+    @FXML
+    private TextField SurnameWorkerEdit;
+
+    @FXML
+    private Button WorkerEditButton;
+
+    @FXML
+    private ComboBox<?> YearWorkerEdit;
+
+    @FXML
+    private Spinner<?> SalaryWorkerEdit;
+
+
+
+
+
     private ArrayList<Admins> AdminArrayList  = new ArrayList<>();
     private ArrayList<Worker> WorkerArrayList  = new ArrayList<>();
 
@@ -223,6 +259,11 @@ public class AdminAppController {
             ShowWorkerTable.getColumns().get(6).setCellValueFactory(new PropertyValueFactory("Worker_year"));
             ShowWorkerTable.getColumns().get(7).setCellValueFactory(new PropertyValueFactory("Worker_id"));
         });
+
+        WorkerEditButton.setOnAction(event->{
+
+        });
+
     }
 
 }

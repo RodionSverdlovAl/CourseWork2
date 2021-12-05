@@ -68,4 +68,34 @@ public class DatabaseHandlerWorkers extends Configs {
     }
 
 
+    public Worker Find_Worker_For_Edit(String id){
+        Worker worker = new Worker();
+        String findAdmin = "SELECT * FROM " + ConstWorker.WORKER_TABLE + " WHERE "+ConstWorker.WORKER_ID + "=?";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(findAdmin);
+            prSt.setString(1,id);
+            ResultSet resSet = prSt.executeQuery();
+            while (resSet.next()) {
+                Worker w = new Worker();
+                w.setWorker_name(resSet.getString("Worker_name"));
+                w.setWorker_surname(resSet.getString("Worker_surname"));
+                w.setWorker_fathername(resSet.getString("Worker_fathername"));
+                w.setWorker_departament(resSet.getString("Worker_departament"));
+                w.setWorker_position(resSet.getString("Worker_position"));
+                w.setWorker_salary(resSet.getString("Worker_salary"));
+                w.setWorker_year(resSet.getString("Worker_year"));
+                w.setWorker_id(resSet.getString("Worker_id"));
+                worker = w;
+            }
+            System.out.println("id принятое на сервер = " + id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return worker;
+    }
+
+
+
 }
