@@ -119,8 +119,6 @@ public class AdminAppController {
     @FXML
     private Button ShowWorkersButton;
 
-
-
     @FXML
     private Button FindWorker_Button;
 
@@ -137,7 +135,7 @@ public class AdminAppController {
     private TextField FathernameWorkerEdit;
 
     @FXML
-    private ComboBox<?> DepartamentWorkerEdit;
+    private ComboBox<String> DepartamentWorkerEdit;
 
     @FXML
     private TextField SurnameWorkerEdit;
@@ -146,18 +144,13 @@ public class AdminAppController {
     private Button WorkerEditButton;
 
     @FXML
-    private ComboBox<?> YearWorkerEdit;
+    private ComboBox<String> YearWorkerEdit;
 
     @FXML
-    private Spinner<?> SalaryWorkerEdit;
-
-
-
-
+    private Spinner<Integer> SalaryWorkerEdit;
 
     private ArrayList<Admins> AdminArrayList  = new ArrayList<>();
     private ArrayList<Worker> WorkerArrayList  = new ArrayList<>();
-
 
     @FXML
     void initialize() {
@@ -168,7 +161,6 @@ public class AdminAppController {
             admin_client.AddAdmin(AdminNameInput.getText(),AdminLastnamefield.getText(),
                     adminloginfield.getText(),adminpasswordfield.getText(),adminemailfield.getText());
         });
-
 
         uploadbutton.setOnAction(event->{
             AdminClient admin_client = new AdminClient();
@@ -190,6 +182,20 @@ public class AdminAppController {
             adminClient.DeleteAdmin(id);
         });
 
+        ObservableList<String> departament = FXCollections.observableArrayList("Разработки","Продаж","Рекламмы","Логистики","Производственный");
+        workerdepartament.setItems(departament);
+        DepartamentWorkerEdit.setItems(departament);
+
+        ObservableList<String> year = FXCollections.observableArrayList("1970","1971","1972","1973",
+                "1974","1975","1976","1977","1978","1979","1980","1981","1982","1983","1984","1985","1986",
+                "1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999",
+                "2000","2001","2002","2003");
+        workeryear.setItems(year);
+        YearWorkerEdit.setItems(year);
+
+        workersalary.setValueFactory(svf);
+        SalaryWorkerEdit.setValueFactory(svf);
+
         FindWorker_Button.setOnAction(event->{
             String id = FindWorker_id.getText();
             AdminClient adminClient = new AdminClient();
@@ -199,6 +205,7 @@ public class AdminAppController {
             NameWorkerEdit.setText(worker.getWorker_name());
             SurnameWorkerEdit.setText(worker.getWorker_surname());
             FathernameWorkerEdit.setText(worker.getWorker_fathername());
+            PositionWorkerEdit.setText(worker.getWorker_position());
 
         });
 
@@ -230,17 +237,6 @@ public class AdminAppController {
 
         });
 
-        ObservableList<String> departament = FXCollections.observableArrayList("Разработки","Продаж","Рекламмы","Логистики","Производственный","Кунилингуса","Минета");
-        workerdepartament.setItems(departament);
-
-        ObservableList<String> year = FXCollections.observableArrayList("1970","1971","1972","1973",
-                "1974","1975","1976","1977","1978","1979","1980","1981","1982","1983","1984","1985","1986",
-                "1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999",
-                "2000","2001","2002","2003");
-        workeryear.setItems(year);
-
-        workersalary.setValueFactory(svf);
-
         workerAddButton.setOnAction(event->{
             String Name = workername.getText();
             String Surname = workersurname.getText();
@@ -271,9 +267,5 @@ public class AdminAppController {
             ShowWorkerTable.getColumns().get(6).setCellValueFactory(new PropertyValueFactory("Worker_year"));
             ShowWorkerTable.getColumns().get(7).setCellValueFactory(new PropertyValueFactory("Worker_id"));
         });
-
-
-
     }
-
 }
