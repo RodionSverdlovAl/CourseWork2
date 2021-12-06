@@ -329,6 +329,19 @@ public class AdminClient {
             e.printStackTrace();
         }
     }
+    void Accounting_bonus(Integer bonus,String id){
+        try(Socket clientSocket = new Socket("127.0.0.1",8081);
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
+        {
+            writer.write("Accounting_bonus");writer.newLine();
+            writer.write(bonus.toString());writer.newLine();
+            writer.write(id);writer.newLine();
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     void AddWorker(String name, String surname, String fathername, String departament, String position,String salary,String year){

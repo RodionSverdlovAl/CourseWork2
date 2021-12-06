@@ -82,4 +82,19 @@ public class DatabaseHandlerAccounts extends Configs {
             e.printStackTrace();
         }
     }
+    public void Accounting_bonus(Integer bonus, String id){
+        String update = "UPDATE " + ConstAccounts.ACCOUNTS_TABLE +
+                " SET " + ConstAccounts.ACCOUNTS_BONUS + "=?"+ " WHERE " + ConstAccounts.ACCOUNTS_IDWORKER + "=?";
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(update);
+            preparedStatement.setInt(1, bonus);
+            preparedStatement.setString(2, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

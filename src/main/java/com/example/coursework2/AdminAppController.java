@@ -317,6 +317,12 @@ public class AdminAppController {
             AdminClient adminClient = new AdminClient();
             adminClient.Accounting_delete_rebuke(id);
         });
+        Accounting_bonus_button.setOnAction(event->{
+            Integer bonus_p = Accounting_select_procent.getValue();
+            String id = Accounting_id.getText();
+            AdminClient adminClient = new AdminClient();
+            adminClient.Accounting_bonus(bonus_p,id);
+        });
 
     }
 }
