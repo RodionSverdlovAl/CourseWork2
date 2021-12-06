@@ -71,6 +71,14 @@ public class AdminServer {
                                         DatabaseHandlerAccounts d = new DatabaseHandlerAccounts();
                                         d.Accounting_bonus(bonus,id);
                                     }break;
+                                    case "Accounting_hour":{
+                                        System.out.println("Вы вошли в кейс добавление часов");
+                                        String hour = reader.readLine();
+                                        String id = reader.readLine();
+                                        Integer hours = Integer.parseInt(hour);
+                                        DatabaseHandlerAccounts d = new DatabaseHandlerAccounts();
+                                        d.Accounting_add_hour(hours,id);
+                                    }break;
                                     case "addAdmin":{
                                         System.out.println("Вы вошли в кейс добавление администратора");
                                         String name = reader.readLine();

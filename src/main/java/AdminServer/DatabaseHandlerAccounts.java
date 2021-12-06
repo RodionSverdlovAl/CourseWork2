@@ -95,6 +95,39 @@ public class DatabaseHandlerAccounts extends Configs {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+    public void Accounting_add_hour(Integer hour, String id){
+        // сначало достаем значение из таблицы
+        Integer HOUR;
+        String select = "SELECT " +"hour"+ " FROM " + ConstAccounts.ACCOUNTS_TABLE + " WHERE " +
+                ConstAccounts.ACCOUNTS_IDWORKER + "=?";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(select);
+            prSt.setString(1,id);
+            ResultSet resSet = prSt.executeQuery();
+            while (resSet.next()){
+                Accounting accounting = new Accounting();
+                accounting.setAcc_hour(resSet.getString("hour"));
+                HOUR = Integer.parseInt(accounting.getAcc_hour()) +hour;
+                System.out.println(HOUR);
+                String update = "UPDATE " + ConstAccounts.ACCOUNTS_TABLE +
+                        " SET " + ConstAccounts.ACCOUNTS_HOUR + "=?"+ " WHERE " + ConstAccounts.ACCOUNTS_IDWORKER + "=?";
+                try {
+                    PreparedStatement preparedStatement = getDbConnection().prepareStatement(update);
+                    preparedStatement.setInt(1, HOUR);
+                    preparedStatement.setString(2, id);
+                    preparedStatement.executeUpdate();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
 
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

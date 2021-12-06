@@ -323,6 +323,11 @@ public class AdminAppController {
             AdminClient adminClient = new AdminClient();
             adminClient.Accounting_bonus(bonus_p,id);
         });
-
+        Accounting_add_hour_button.setOnAction(event->{
+            String id = Accounting_id.getText();
+            Integer hours = Accounting_select_hour.getValue();
+            AdminClient adminClient = new AdminClient();
+            adminClient.Accounting_add_hour(hours,id);
+        });
     }
 }

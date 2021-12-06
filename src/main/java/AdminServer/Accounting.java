@@ -7,6 +7,10 @@ public class Accounting {
     private String Acc_bonus;
     private String Acc_rebuke;
 
+    public Accounting() {
+
+    }
+
     @Override
     public String toString() {
         return "Accounting{" +
