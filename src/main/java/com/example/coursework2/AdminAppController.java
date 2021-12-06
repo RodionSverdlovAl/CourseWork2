@@ -14,6 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AdminAppController {
     @FXML
+    private Button Accounting_add_worker;
+    @FXML
     private TableView<Worker> Accounting_table;
     @FXML
     private TextField Accounting_id;
@@ -296,6 +298,14 @@ public class AdminAppController {
             Accounting_table.getColumns().get(2).setCellValueFactory(new PropertyValueFactory("Worker_departament"));
             Accounting_table.getColumns().get(3).setCellValueFactory(new PropertyValueFactory("Worker_position"));
 
+        });
+
+        Accounting_add_worker.setOnAction(event->{
+            String id = Accounting_id.getText();
+            AdminClient adminClient = new AdminClient();
+            Worker worker;
+            worker = adminClient.FindWorker(id);
+            adminClient.Accounting_add_worker(worker);
         });
 
     }

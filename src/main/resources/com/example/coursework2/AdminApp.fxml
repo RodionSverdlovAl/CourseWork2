@@ -357,6 +357,7 @@
                           </columns>
                         </TableView>
                         <ComboBox fx:id="Accounting_select_procent" layoutX="453.0" layoutY="188.0" prefHeight="32.0" prefWidth="100.0" promptText="\% премии" />
+                        <Button fx:id="Accounting_add_worker" layoutX="543.0" layoutY="146.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="263.0" text="Добавить работника в учет деятельности" />
                      </children>
                   </AnchorPane>
                </content>

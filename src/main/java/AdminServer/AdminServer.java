@@ -39,9 +39,14 @@ public class AdminServer {
                                         writer.newLine();
                                         writer.flush();
                                     }break;
+                                    case "Accounting_add_worker":{
+                                        System.out.println("Вы вошли в кейс добавление работника в учет");
+                                        String worker_id = reader.readLine();
+                                        DatabaseHandlerAccounts d = new DatabaseHandlerAccounts();
+                                        d.Accounting_add_worker(worker_id);
+                                    }break;
                                     case "addAdmin":{
                                         System.out.println("Вы вошли в кейс добавление администратора");
-
                                         String name = reader.readLine();
                                         String surname = reader.readLine();
                                         String login = reader.readLine();
