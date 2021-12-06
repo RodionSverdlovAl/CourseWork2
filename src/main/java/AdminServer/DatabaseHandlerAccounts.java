@@ -1,9 +1,6 @@
 package AdminServer;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DatabaseHandlerAccounts extends Configs {
     Connection dbConnection;
@@ -17,6 +14,24 @@ public class DatabaseHandlerAccounts extends Configs {
 
         dbConnection = DriverManager.getConnection(connectionString, dbUser, dbPass);
         return dbConnection;
+    }
+
+    public ResultSet getAccounting(String worker_id) {
+        ResultSet resSet = null;
+
+        String select = "SELECT * FROM " + ConstAccounts.ACCOUNTS_TABLE + " WHERE " +
+                ConstAccounts.ACCOUNTS_IDWORKER + "=?";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(select);
+            prSt.setString(1,worker_id);
+
+            resSet = prSt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return resSet;
     }
 
     public void Accounting_add_worker(String worker_id){

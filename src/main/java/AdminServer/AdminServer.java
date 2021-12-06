@@ -43,7 +43,13 @@ public class AdminServer {
                                         System.out.println("Вы вошли в кейс добавление работника в учет");
                                         String worker_id = reader.readLine();
                                         DatabaseHandlerAccounts d = new DatabaseHandlerAccounts();
-                                        d.Accounting_add_worker(worker_id);
+                                        ServerMethods s = new ServerMethods();
+                                        String success = s.AccountingCheck(worker_id);
+                                        if(success == "not success"){
+                                            d.Accounting_add_worker(worker_id);
+                                        }else{
+                                            System.out.println("Данный работник уже добавлен в учет деятельности");
+                                        }
                                     }break;
                                     case "addAdmin":{
                                         System.out.println("Вы вошли в кейс добавление администратора");

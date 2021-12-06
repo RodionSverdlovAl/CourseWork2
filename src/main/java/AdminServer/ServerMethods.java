@@ -27,6 +27,25 @@ public class ServerMethods {
            String singinlogs = "not success";
            return singinlogs;
        }
+    }
 
+    public String AccountingCheck(String worker_id){
+        DatabaseHandlerAccounts dbHandler = new DatabaseHandlerAccounts();
+        ResultSet result =  dbHandler.getAccounting(worker_id);
+        int counter = 0;
+        try{
+            while(result.next()){
+                counter++;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        if(counter >=1){
+            String success = "success";
+            return success;
+        }else{
+            String success = "not success";
+            return success;
+        }
     }
 }
