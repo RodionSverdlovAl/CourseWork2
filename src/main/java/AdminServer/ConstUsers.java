@@ -1,7 +1,7 @@
 package AdminServer;
 
 public class ConstUsers {
-    public static final String USER_TABLE = "accounts";
+    public static final String USER_TABLE = "users";
 
     public static final String USER_ID = "id";
     public static final String USER_NAME = "firstname";

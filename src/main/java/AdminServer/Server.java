@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class AdminServer {
+public class Server {
     public static void main(String[] args) {
         try(ServerSocket serverSocket = new ServerSocket(8081)) { //Создаем сервер
             System.out.println("Server started...");
@@ -78,6 +78,19 @@ public class AdminServer {
                                         Integer hours = Integer.parseInt(hour);
                                         DatabaseHandlerAccounts d = new DatabaseHandlerAccounts();
                                         d.Accounting_add_hour(hours,id);
+                                    }break;
+                                    case "addUser":{
+                                        System.out.println("Вы вошли в кейс добавление пользователя");
+                                        String name = reader.readLine();
+                                        String surname = reader.readLine();
+                                        String login = reader.readLine();
+                                        String password = reader.readLine();
+                                        String email = reader.readLine();
+                                        String gender = reader.readLine();
+                                        String location = reader.readLine();
+                                        Users user = new Users(name,surname,login,password,email,gender,location);
+                                        DatabaseHandlerUsers d = new DatabaseHandlerUsers();
+                                        d.signUpUser(user);
                                     }break;
                                     case "addAdmin":{
                                         System.out.println("Вы вошли в кейс добавление администратора");

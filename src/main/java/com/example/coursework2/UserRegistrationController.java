@@ -53,6 +53,8 @@ public class UserRegistrationController {
                 UserGender = "женщина";
             }
             UserLocation = locationradiobutton.getValue();
+            UserClient userClient = new UserClient();
+            userClient.AddUser(UserName,UserSurname,UserLogin,UserPassword,UserEmail,UserGender,UserLocation);
             System.out.println(UserName+" "+UserSurname+" "+UserLogin+" "+UserPassword+" "+UserEmail+" "+UserGender+ " "+UserLocation);
         });
 
