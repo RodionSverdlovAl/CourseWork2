@@ -122,7 +122,6 @@ public class DatabaseHandlerAccounts extends Configs {
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
