@@ -49,6 +49,21 @@ public class DatabaseHandlerAccounts extends Configs {
         }
     }
 
+    public void Accounting_delete_rebuke(String id){
+        String update = "UPDATE " + ConstAccounts.ACCOUNTS_TABLE +
+                " SET " + ConstAccounts.ACCOUNTS_REBUKE + "=?"+ " WHERE " + ConstAccounts.ACCOUNTS_IDWORKER + "=?";
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(update);
+            preparedStatement.setString(1, "нет");
+            preparedStatement.setString(2, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void Accounting_add_worker(String worker_id){
         String insert = "INSERT INTO " + ConstAccounts.ACCOUNTS_TABLE + "(" +
                 ConstAccounts.ACCOUNTS_IDWORKER + "," + ConstAccounts.ACCOUNTS_HOUR + "," +

@@ -57,6 +57,12 @@ public class AdminServer {
                                         DatabaseHandlerAccounts d = new DatabaseHandlerAccounts();
                                         d.Accounting_add_rebuke(worker_id);
                                     }break;
+                                    case "Accounting_delete_rebuke":{
+                                        System.out.println("Вы вошли в кейс добавление удаление взыскания");
+                                        String worker_id = reader.readLine();
+                                        DatabaseHandlerAccounts d = new DatabaseHandlerAccounts();
+                                        d.Accounting_delete_rebuke(worker_id);
+                                    }break;
                                     case "addAdmin":{
                                         System.out.println("Вы вошли в кейс добавление администратора");
                                         String name = reader.readLine();

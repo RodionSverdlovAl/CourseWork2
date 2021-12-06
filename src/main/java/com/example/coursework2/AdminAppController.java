@@ -312,6 +312,11 @@ public class AdminAppController {
             AdminClient adminClient = new AdminClient();
             adminClient.Accounting_add_rebuke(id);
         });
+        Accounting_delete_rebuke_button.setOnAction(event->{
+            String id = Accounting_id.getText();
+            AdminClient adminClient = new AdminClient();
+            adminClient.Accounting_delete_rebuke(id);
+        });
 
     }
 }
