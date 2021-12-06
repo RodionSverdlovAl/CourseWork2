@@ -305,6 +305,18 @@ public class AdminClient {
             e.printStackTrace();
         }
     }
+    void Accounting_add_rebuke(String worker_id){
+        try(Socket clientSocket = new Socket("127.0.0.1",8081);
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
+        {
+            writer.write("Accounting_add_rebuke");writer.newLine();
+            writer.write(worker_id);writer.newLine();
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     void AddWorker(String name, String surname, String fathername, String departament, String position,String salary,String year){

@@ -307,6 +307,11 @@ public class AdminAppController {
             worker = adminClient.FindWorker(id);
             adminClient.Accounting_add_worker(worker);
         });
+        Accounting_add_rebuke_button.setOnAction(event->{
+            String id = Accounting_id.getText();
+            AdminClient adminClient = new AdminClient();
+            adminClient.Accounting_add_rebuke(id);
+        });
 
     }
 }

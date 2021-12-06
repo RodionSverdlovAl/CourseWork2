@@ -51,6 +51,12 @@ public class AdminServer {
                                             System.out.println("Данный работник уже добавлен в учет деятельности");
                                         }
                                     }break;
+                                    case "Accounting_add_rebuke":{
+                                        System.out.println("Вы вошли в кейс добавление дисциплинарного взыскания");
+                                        String worker_id = reader.readLine();
+                                        DatabaseHandlerAccounts d = new DatabaseHandlerAccounts();
+                                        d.Accounting_add_rebuke(worker_id);
+                                    }break;
                                     case "addAdmin":{
                                         System.out.println("Вы вошли в кейс добавление администратора");
                                         String name = reader.readLine();
