@@ -1,6 +1,8 @@
 package Clasess;
 
-public class AccountingWorkers {
+import java.io.Serializable;
+
+public class AccountingWorkers  implements Serializable {
     private String Worker_name;
     private String Worker_surname;
     private String Worker_departament;
@@ -8,6 +10,10 @@ public class AccountingWorkers {
     private String Acc_hour;
     private String Acc_bonus;
     private String Acc_rebuke;
+
+    public AccountingWorkers() {
+
+    }
 
     @Override
     public String toString() {

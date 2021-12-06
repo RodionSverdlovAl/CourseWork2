@@ -1,6 +1,8 @@
 package Clasess;
 
-public class Accounting {
+import java.io.Serializable;
+
+public class Accounting implements Serializable {
     private String Accounting_id;
     private String Acc_workerid;
     private String Acc_hour;

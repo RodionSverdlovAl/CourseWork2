@@ -2,9 +2,13 @@ package Database;
 
 import Clasess.Accounting;
 import AdminServer.Configs;
+import Clasess.AccountingWorkers;
+import Clasess.Worker;
 import Const.ConstAccounts;
+import Const.ConstWorker;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DatabaseHandlerAccounts extends Configs {
     Connection dbConnection;
@@ -133,8 +137,34 @@ public class DatabaseHandlerAccounts extends Configs {
             e.printStackTrace();
         }
     }
+
+    public ArrayList<AccountingWorkers> getAccountingWorkers() {
+        ArrayList<AccountingWorkers> worker = new ArrayList<AccountingWorkers>();
+        String select = "SELECT workers.name, workers.surname, workers.departament, workers.position, accounts.hour, accounts.bonus,accounts.rebuke FROM coursework.workers JOIN accounts ON accounts.worker_id=workers.id;";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(select);
+            ResultSet resSet = prSt.executeQuery();
+            while (resSet.next()) {
+                AccountingWorkers aw = new AccountingWorkers();
+                aw.setWorker_name(resSet.getString("name"));
+                aw.setWorker_surname(resSet.getString("surname"));
+                aw.setWorker_departament(resSet.getString("departament"));
+                aw.setWorker_position(resSet.getString("position"));
+                aw.setAcc_hour(resSet.getString("hour"));
+                aw.setAcc_bonus(resSet.getString("bonus"));
+                aw.setAcc_rebuke(resSet.getString("rebuke"));
+                worker.add(aw);
+                //System.out.println(aw.toString());
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return worker;
+    }
+
 }
 
 
-// SELECT workers.name, workers.surname, workers.departament, workers.position, accounts.hour, accounts.bonus,accounts.rebuke FROM coursework.workers
-//	JOIN accounts ON accounts.worker_id=workers.id;
+// SELECT workers.name, workers.surname, workers.departament, workers.position, accounts.hour, accounts.bonus,accounts.rebuke FROM coursework.workers JOIN accounts ON accounts.worker_id=workers.id;

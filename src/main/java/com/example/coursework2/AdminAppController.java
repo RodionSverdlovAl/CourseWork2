@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import Clasess.AccountingWorkers;
 import Clasess.Admins;
 import Clasess.Worker;
 import javafx.collections.FXCollections;
@@ -16,7 +17,7 @@ public class AdminAppController {
     @FXML
     private Button RELOAD_ACCOUNTING;
     @FXML
-    private TableView<?> ACCOUNTING_TABLE;
+    private TableView<AccountingWorkers> ACCOUNTING_TABLE;
     @FXML
     private Button Accounting_add_worker;
     @FXML
@@ -140,6 +141,7 @@ public class AdminAppController {
 
     private ArrayList<Admins> AdminArrayList  = new ArrayList<>();
     private ArrayList<Worker> WorkerArrayList  = new ArrayList<>();
+    private ArrayList<AccountingWorkers> AccountingWorkerArrayList  = new ArrayList<>();
 
     @FXML
     void initialize() {
@@ -267,6 +269,22 @@ public class AdminAppController {
             workersurname.clear();
             workerfathername.clear();
             workerposition.clear();
+        });
+
+        RELOAD_ACCOUNTING.setOnAction(event->{
+            AdminClient adminClient = new AdminClient();
+            adminClient.showAccountingWorkers();
+            ArrayList<AccountingWorkers> accountingWorkers = adminClient.showAccountingWorkers();
+            this.AccountingWorkerArrayList = accountingWorkers;
+            ObservableList<AccountingWorkers> observableList  =FXCollections.observableArrayList(adminClient.showAccountingWorkers());
+            ACCOUNTING_TABLE.setItems(observableList);
+            ACCOUNTING_TABLE.getColumns().get(0).setCellValueFactory(new PropertyValueFactory("Worker_name"));
+            ACCOUNTING_TABLE.getColumns().get(1).setCellValueFactory(new PropertyValueFactory("Worker_surname"));
+            ACCOUNTING_TABLE.getColumns().get(2).setCellValueFactory(new PropertyValueFactory("Worker_departament"));
+            ACCOUNTING_TABLE.getColumns().get(3).setCellValueFactory(new PropertyValueFactory("Worker_position"));
+            ACCOUNTING_TABLE.getColumns().get(4).setCellValueFactory(new PropertyValueFactory("Acc_hour"));
+            ACCOUNTING_TABLE.getColumns().get(5).setCellValueFactory(new PropertyValueFactory("Acc_bonus"));
+            ACCOUNTING_TABLE.getColumns().get(6).setCellValueFactory(new PropertyValueFactory("Acc_rebuke"));
         });
 
         ShowWorkersButton.setOnAction(event->{

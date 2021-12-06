@@ -1,5 +1,6 @@
 package com.example.coursework2;
 
+import Clasess.AccountingWorkers;
 import Clasess.Admins;
 import Clasess.Worker;
 
@@ -96,6 +97,35 @@ public class AdminClient {
             e.printStackTrace();
             log = "Не удалось подключится к серверу";
         }
+    }
+
+    ArrayList<AccountingWorkers> showAccountingWorkers(){
+        try(Socket clientSocket = new Socket("127.0.0.1",8081);
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
+        {
+            log = "Вы подключились к серверу";
+            writer.write("ShowAccountingWorkers");writer.newLine();
+            writer.flush();
+            ArrayList<AccountingWorkers> arrayList = new ArrayList<AccountingWorkers>();
+            try {
+                ObjectInputStream objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
+                try {
+                    Object object = objectInputStream.readObject();
+                    arrayList =  (ArrayList<AccountingWorkers>) object;
+                    System.out.println(arrayList.size());
+                    return arrayList;
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            log = "Не удалось подключится к серверу";
+        }
+        return null;
     }
 
     ArrayList<Worker> showWorkers(){

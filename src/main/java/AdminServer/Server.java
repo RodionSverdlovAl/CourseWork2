@@ -1,5 +1,6 @@
 package AdminServer;
 
+import Clasess.AccountingWorkers;
 import Clasess.Admins;
 import Clasess.Users;
 import Clasess.Worker;
@@ -121,6 +122,24 @@ public class Server {
                                         DatabaseHandler dbHandler = new DatabaseHandler();
                                         dbHandler.signUpAdmin(admin);
                                         System.out.println(name+surname+login+password+email);
+                                    }break;
+                                    case "ShowAccountingWorkers":{
+                                        System.out.println("Вы вошли в кейс просмотр Аналитики работников");
+                                        DatabaseHandlerAccounts d = new DatabaseHandlerAccounts();
+                                        ArrayList<AccountingWorkers> accountingWorkers = d.getAccountingWorkers();
+                                        System.out.println(accountingWorkers.get(1));
+                                        ArrayList<AccountingWorkers> arrayList = new ArrayList<>();
+                                        for(AccountingWorkers p : accountingWorkers){
+                                            System.out.println(p.toString());
+                                            arrayList.add(p);
+                                        }
+                                        try {
+                                            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                                            objectOutputStream.writeObject(arrayList);
+                                        }
+                                        catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
                                     }break;
                                     case "ShowWorkers":{
                                         System.out.println("Вы вошли в кейс просмотр Работников");
