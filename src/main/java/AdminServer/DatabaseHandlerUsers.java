@@ -1,9 +1,6 @@
 package AdminServer;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DatabaseHandlerUsers extends Configs {
     Connection dbConnection;
@@ -42,5 +39,24 @@ public class DatabaseHandlerUsers extends Configs {
             e.printStackTrace();
         }
     }
+
+    public ResultSet getUser(Users user) {
+        ResultSet resSet = null;
+
+        String select = "SELECT * FROM " + ConstUsers.USER_TABLE + " WHERE " +
+                ConstUsers.USER_LOGIN + "=? AND "+ConstUsers.USER_PASSWORD + "=?";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(select);
+            prSt.setString(1,user.getUser_login());
+            prSt.setString(2,user.getUser_password());
+            resSet = prSt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return resSet;
+    }
+
 
 }

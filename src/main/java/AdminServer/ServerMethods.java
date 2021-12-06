@@ -29,6 +29,30 @@ public class ServerMethods {
        }
     }
 
+    public String LoginUser(String loginText, String loginPassword){
+        DatabaseHandlerUsers dbHandler = new DatabaseHandlerUsers();
+        Users users = new Users();
+        users.setUser_login(loginText);
+        users.setUser_password(loginPassword);
+
+        ResultSet result =  dbHandler.getUser(users);
+        int counter = 0;
+        try{
+            while(result.next()){
+                counter++;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        if(counter >=1){
+            String singinlogs = "success";
+            return singinlogs;
+        }else{
+            String singinlogs = "not success";
+            return singinlogs;
+        }
+    }
+
     public String AccountingCheck(String worker_id){
         DatabaseHandlerAccounts dbHandler = new DatabaseHandlerAccounts();
         ResultSet result =  dbHandler.getAccounting(worker_id);

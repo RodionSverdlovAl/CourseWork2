@@ -26,4 +26,31 @@ public class UserClient {
             e.printStackTrace();
         }
     }
+
+    int signIn(String ip, int port, String login, String password){
+        int status = 0;
+
+        try(Socket clientSocket = new Socket(ip,port);
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
+        {
+            System.out.println("Client connected...");
+            writer.write("authorizationUser");writer.newLine();
+            // отправляем логин
+            writer.write(login);writer.newLine();
+            // отправляем пороль
+            writer.write(password);writer.newLine();
+            writer.flush();
+            String success = reader.readLine(); // принимаем состояние входа успех или нет
+            if(success.equals("success")){
+                status = 1;
+            }else{
+                status = 0;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Не удалось подключится к серверу");
+        }
+        return status;
+    }
 }

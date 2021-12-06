@@ -10,6 +10,10 @@ public class Users {
     private String user_gender;
     private String user_location;
 
+    public Users() {
+
+    }
+
     @Override
     public String toString() {
         return "Users{" +

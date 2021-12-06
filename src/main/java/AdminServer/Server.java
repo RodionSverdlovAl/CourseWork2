@@ -39,6 +39,18 @@ public class Server {
                                         writer.newLine();
                                         writer.flush();
                                     }break;
+                                    case "authorizationUser":{
+                                        System.out.println("Вы успешно вошли в кейс авторизации пользователя");
+                                        String Alogin = reader.readLine(); // принимаем логин
+                                        String Apassword = reader.readLine(); // принимаем пороль
+                                        ServerMethods s = new ServerMethods();
+                                        String SingInSuccess;
+                                        SingInSuccess =  s.LoginUser(Alogin,Apassword);
+                                        writer.write(SingInSuccess); // отправляем успешность вхождения
+                                        System.out.println(SingInSuccess);
+                                        writer.newLine();
+                                        writer.flush();
+                                    }
                                     case "Accounting_add_worker":{
                                         System.out.println("Вы вошли в кейс добавление работника в учет");
                                         String worker_id = reader.readLine();

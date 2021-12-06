@@ -50,6 +50,35 @@ public class UserSignInController {
             stage.setScene(new Scene(root));
             stage.showAndWait();
         });
+
+        signinbutton.setOnAction(event->{
+            String ip_adr = ip_adress.getText();
+            int port_ = Integer.parseInt(port.getText());
+            UserClient userClient = new UserClient();
+
+            if(userClient.signIn(ip_adr,port_,loginfield.getText(),passwordfield.getText()) == 1){
+                System.out.println("Такой аккаунт существует вы успешно вошли");
+                signinbutton.getScene().getWindow().hide();
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("UserApp.fxml"));
+
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+
+                stage.setScene(new Scene(root));
+                stage.showAndWait();
+            }
+            if(userClient.signIn(ip_adr,port_,loginfield.getText(),passwordfield.getText()) == 0){
+                System.out.println("Не удалось войти");
+            }
+        });
+
     }
 
 }
