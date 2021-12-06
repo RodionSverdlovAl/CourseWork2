@@ -34,7 +34,6 @@ public class UserSignInController {
     @FXML
     void initialize() {
         registration_button.setOnAction(event->{
-            registration_button.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("UserRegistration.fxml"));
 

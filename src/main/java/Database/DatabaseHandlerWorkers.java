@@ -1,4 +1,8 @@
-package AdminServer;
+package Database;
+
+import AdminServer.Configs;
+import Const.ConstWorker;
+import Clasess.Worker;
 
 import java.sql.*;
 import java.util.ArrayList;

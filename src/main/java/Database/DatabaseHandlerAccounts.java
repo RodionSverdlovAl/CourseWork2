@@ -1,4 +1,8 @@
-package AdminServer;
+package Database;
+
+import Clasess.Accounting;
+import AdminServer.Configs;
+import Const.ConstAccounts;
 
 import java.sql.*;
 
@@ -130,3 +134,7 @@ public class DatabaseHandlerAccounts extends Configs {
         }
     }
 }
+
+
+// SELECT workers.name, workers.surname, workers.departament, workers.position, accounts.hour, accounts.bonus,accounts.rebuke FROM coursework.workers
+//	JOIN accounts ON accounts.worker_id=workers.id;

@@ -1,4 +1,4 @@
-package AdminServer;
+package Const;
 
 public class ConstUsers {
     public static final String USER_TABLE = "users";

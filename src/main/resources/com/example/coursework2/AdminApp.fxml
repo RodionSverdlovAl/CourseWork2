@@ -366,12 +366,35 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="26.0" layoutY="14.0" prefHeight="200.0" prefWidth="649.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="ФИО" />
-                            <TableColumn prefWidth="573.0" text="C2" />
-                          </columns>
-                        </TableView>
+                        <TabPane prefHeight="681.0" prefWidth="822.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="просмотр работников">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="ACCOUNTING_TABLE" layoutX="14.0" layoutY="14.0" prefHeight="530.0" prefWidth="808.0">
+                                            <columns>
+                                              <TableColumn prefWidth="146.0" text="Имя" />
+                                              <TableColumn prefWidth="134.0" text="Фамилия" />
+                                                <TableColumn prefWidth="128.0" text="Отдел" />
+                                                <TableColumn prefWidth="160.0" text="Должность" />
+                                                <TableColumn prefWidth="91.0" text="кол-во часов" />
+                                                <TableColumn prefWidth="71.0" text="премия %" />
+                                                <TableColumn prefWidth="65.0" text="выговор" />
+                                            </columns>
+                                          </TableView>
+                                          <Button fx:id="RELOAD_ACCOUNTING" layoutX="14.0" layoutY="555.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="обновить" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab text="Untitled Tab 2">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
                      </children>
                   </AnchorPane>
               </content>

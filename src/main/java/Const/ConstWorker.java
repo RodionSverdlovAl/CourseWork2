@@ -1,4 +1,4 @@
-package AdminServer;
+package Const;
 
 public class ConstWorker {
 

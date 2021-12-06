@@ -1,7 +1,7 @@
 package com.example.coursework2;
 
-import AdminServer.Admins;
-import AdminServer.Worker;
+import Clasess.Admins;
+import Clasess.Worker;
 
 import java.io.*;
 import java.net.Socket;

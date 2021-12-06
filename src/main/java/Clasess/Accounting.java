@@ -1,4 +1,4 @@
-package AdminServer;
+package Clasess;
 
 public class Accounting {
     private String Accounting_id;

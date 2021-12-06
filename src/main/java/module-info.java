@@ -7,7 +7,9 @@ module com.example.coursework2 {
     opens com.example.coursework2 to javafx.fxml;
     exports com.example.coursework2;
     exports AdminServer;
-
+    exports Database;
+    exports Const;
+    exports Clasess;
 
 
 }

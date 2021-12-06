@@ -1,4 +1,4 @@
-package AdminServer;
+package Clasess;
 
 import java.io.Serializable;
 

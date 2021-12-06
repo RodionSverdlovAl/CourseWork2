@@ -1,4 +1,8 @@
-package AdminServer;
+package Database;
+
+import Clasess.Admins;
+import AdminServer.Configs;
+import Const.Const;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,4 +1,8 @@
-package AdminServer;
+package Database;
+
+import AdminServer.Configs;
+import Const.ConstUsers;
+import Clasess.Users;
 
 import java.sql.*;
 
