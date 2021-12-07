@@ -1,9 +1,6 @@
 package AdminServer;
 
-import Clasess.AccountingWorkers;
-import Clasess.Admins;
-import Clasess.Users;
-import Clasess.Worker;
+import Clasess.*;
 import Database.DatabaseHandler;
 import Database.DatabaseHandlerAccounts;
 import Database.DatabaseHandlerUsers;
@@ -123,6 +120,24 @@ public class Server {
                                         dbHandler.signUpAdmin(admin);
                                         System.out.println(name+surname+login+password+email);
                                     }break;
+                                    case "ShowWorkersSalary":{
+                                        System.out.println("Вы вошли в кейс просмотр Аналитики зарплат работников");
+                                        DatabaseHandlerAccounts d = new DatabaseHandlerAccounts();
+                                        ArrayList<Salary> salary = d.getWorkerSalary();
+                                        ArrayList<Salary> arrayList = new ArrayList<>();
+                                        System.out.println(salary.get(1));
+                                        for(Salary p : salary){
+                                            System.out.println(p.toString());
+                                            arrayList.add(p);
+                                        }
+                                        try {
+                                            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                                            objectOutputStream.writeObject(arrayList);
+                                        }
+                                        catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
                                     case "ShowAccountingWorkers":{
                                         System.out.println("Вы вошли в кейс просмотр Аналитики работников");
                                         DatabaseHandlerAccounts d = new DatabaseHandlerAccounts();

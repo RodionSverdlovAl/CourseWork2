@@ -1,9 +1,6 @@
 package com.example.coursework2;
 
-import Clasess.AccountingWorkers;
-import Clasess.Admins;
-import Clasess.Users;
-import Clasess.Worker;
+import Clasess.*;
 
 import java.io.*;
 import java.net.Socket;
@@ -129,6 +126,38 @@ public class AdminClient {
         return null;
     }
 
+    ArrayList<Salary> ShowSalaryWorkers(){
+        try(Socket clientSocket = new Socket("127.0.0.1",8081);
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
+        {
+            log = "Вы подключились к серверу";
+            writer.write("ShowWorkersSalary");
+            writer.newLine();
+            writer.flush();
+            ArrayList<Salary> arrayList = new ArrayList<Salary>();
+            try {
+                ObjectInputStream objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
+                try {
+                    Object object = objectInputStream.readObject();
+                    arrayList =  (ArrayList<Salary>) object;
+                    System.out.println(arrayList.size());
+                    for(int i=0; i<arrayList.size(); i++){
+                        System.out.println(arrayList.get(i).getWorker_name());
+                    }
+                    return arrayList;
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            log = "Не удалось подключится к серверу";
+        }
+        return null;
+    }
 
     ArrayList<Worker> showWorkers(){
         try(Socket clientSocket = new Socket("127.0.0.1",8081);

@@ -4,10 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import Clasess.AccountingWorkers;
-import Clasess.Admins;
-import Clasess.Users;
-import Clasess.Worker;
+import Clasess.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -147,14 +144,36 @@ public class AdminAppController {
     private Button deleteUserButton;
     @FXML
     private Button showUsersButton;
+    @FXML
+    private TableView<Salary> SalaryTable;
+    @FXML
+    private Button ShowSalaryButton;
+    @FXML
+    private TextArea FinishSalary;
 
     private ArrayList<Admins> AdminArrayList  = new ArrayList<>();
     private ArrayList<Users> UserArrayList  = new ArrayList<>();
     private ArrayList<Worker> WorkerArrayList  = new ArrayList<>();
     private ArrayList<AccountingWorkers> AccountingWorkerArrayList  = new ArrayList<>();
+    private ArrayList<Salary> salaryWorkers = new ArrayList<>();
 
     @FXML
     void initialize() {
+
+        ShowSalaryButton.setOnAction(event->{
+            AdminClient adminClient = new AdminClient();
+            adminClient.ShowSalaryWorkers();
+            ArrayList<Salary> salaryWorkers = adminClient.ShowSalaryWorkers();
+            this.salaryWorkers = salaryWorkers;
+            ObservableList<Salary> observableList  =FXCollections.observableArrayList(adminClient.ShowSalaryWorkers());
+            SalaryTable.setItems(observableList);
+            SalaryTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory("Worker_id"));
+            SalaryTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory("Worker_name"));
+            SalaryTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory("Worker_surname"));
+            SalaryTable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory("Worker_departament"));
+            SalaryTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory("Worker_salary"));
+        });
+
 
         SignUpAdminButton.setOnAction(event->{
 

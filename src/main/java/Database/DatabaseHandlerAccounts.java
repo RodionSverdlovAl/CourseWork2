@@ -3,6 +3,7 @@ package Database;
 import Clasess.Accounting;
 import AdminServer.Configs;
 import Clasess.AccountingWorkers;
+import Clasess.Salary;
 import Clasess.Worker;
 import Const.ConstAccounts;
 import Const.ConstWorker;
@@ -136,6 +137,46 @@ public class DatabaseHandlerAccounts extends Configs {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<Salary> getWorkerSalary(){
+        ArrayList<Salary> salary = new ArrayList<Salary>();
+        String select ="SELECT workers.id, workers.name, workers.surname, workers.departament, workers.salary, accounts.hour, accounts.bonus,accounts.rebuke FROM coursework.workers JOIN accounts ON accounts.worker_id=workers.id;";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(select);
+            ResultSet resSet = prSt.executeQuery();
+            while (resSet.next()) {
+                Salary sw = new Salary();
+                sw.setWorker_id(resSet.getString("id"));
+                sw.setWorker_name(resSet.getString("name"));
+                sw.setWorker_surname(resSet.getString("surname"));
+                sw.setWorker_departament(resSet.getString("departament"));
+                //sw.setWorker_salary(resSet.getString("salary"));
+                sw.setAcc_hour(resSet.getString("hour"));
+                sw.setAcc_bonus(resSet.getString("bonus"));
+                sw.setAcc_rebuke(resSet.getString("rebuke"));
+                Integer sal = Integer.parseInt(resSet.getString("salary"));
+                Integer hou = Integer.parseInt(sw.getAcc_hour());
+                Integer persent = (Integer.parseInt(sw.getAcc_bonus())/100)+1;
+                Integer SumSal = 0;
+                if(sw.getAcc_rebuke() == "нет"){
+                    SumSal = sal*hou*persent;
+                }else
+                if(sw.getAcc_rebuke() == "есть"){
+                    SumSal = sal*hou;
+                }
+                else{
+                    SumSal = sal*hou;
+                }
+                sw.setWorker_salary(SumSal.toString());
+                salary.add(sw);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return salary;
     }
 
     public ArrayList<AccountingWorkers> getAccountingWorkers() {

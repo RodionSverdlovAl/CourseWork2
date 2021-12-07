@@ -386,9 +386,22 @@
                                     </AnchorPane>
                               </content>
                             </Tab>
-                            <Tab text="Untitled Tab 2">
+                            <Tab text="расчет зарплаты">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="SalaryTable" layoutX="28.0" layoutY="14.0" prefHeight="414.0" prefWidth="594.0">
+                                            <columns>
+                                              <TableColumn prefWidth="45.0" text="id" />
+                                              <TableColumn prefWidth="127.0" text="Имя" />
+                                                <TableColumn prefWidth="147.0" text="Фамилия" />
+                                                <TableColumn prefWidth="183.0" text="Отдел" />
+                                                <TableColumn text="Сумма" />
+                                            </columns>
+                                          </TableView>
+                                          <TextArea fx:id="FinishSalary" layoutX="28.0" layoutY="438.0" prefHeight="38.0" prefWidth="243.0" />
+                                          <Button fx:id="ShowSalaryButton" layoutX="647.0" layoutY="14.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="149.0" text="Расчитать зарплаты" />
+                                       </children></AnchorPane>
                               </content>
                             </Tab>
                           </tabs>
