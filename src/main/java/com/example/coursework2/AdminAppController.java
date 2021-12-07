@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import Clasess.AccountingWorkers;
 import Clasess.Admins;
+import Clasess.Users;
 import Clasess.Worker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -138,8 +139,17 @@ public class AdminAppController {
     private TextField ID_FOR_DELETE_WORKER;
     @FXML
     private Spinner<Integer> SalaryWorkerEdit;
+    @FXML
+    private TableView<Users> SHOWUSERTABLE;
+    @FXML
+    private TextField UserDeleteID;
+    @FXML
+    private Button deleteUserButton;
+    @FXML
+    private Button showUsersButton;
 
     private ArrayList<Admins> AdminArrayList  = new ArrayList<>();
+    private ArrayList<Users> UserArrayList  = new ArrayList<>();
     private ArrayList<Worker> WorkerArrayList  = new ArrayList<>();
     private ArrayList<AccountingWorkers> AccountingWorkerArrayList  = new ArrayList<>();
 
@@ -285,6 +295,21 @@ public class AdminAppController {
             ACCOUNTING_TABLE.getColumns().get(4).setCellValueFactory(new PropertyValueFactory("Acc_hour"));
             ACCOUNTING_TABLE.getColumns().get(5).setCellValueFactory(new PropertyValueFactory("Acc_bonus"));
             ACCOUNTING_TABLE.getColumns().get(6).setCellValueFactory(new PropertyValueFactory("Acc_rebuke"));
+        });
+
+        showUsersButton.setOnAction(event->{
+            AdminClient admin_client = new AdminClient();
+            admin_client.showUsers();
+            ArrayList<Users> userArrayList = admin_client.showUsers();
+            this.UserArrayList =  userArrayList;
+            ObservableList<Users> observableList = FXCollections.observableArrayList(admin_client.showUsers());
+            SHOWUSERTABLE.setItems(observableList);
+            SHOWUSERTABLE.getColumns().get(0).setCellValueFactory(new PropertyValueFactory("user_id"));
+            SHOWUSERTABLE.getColumns().get(1).setCellValueFactory(new PropertyValueFactory("user_firstname"));
+            SHOWUSERTABLE.getColumns().get(2).setCellValueFactory(new PropertyValueFactory("user_lastname"));
+            SHOWUSERTABLE.getColumns().get(3).setCellValueFactory(new PropertyValueFactory("user_login"));
+            SHOWUSERTABLE.getColumns().get(4).setCellValueFactory(new PropertyValueFactory("user_password"));
+            SHOWUSERTABLE.getColumns().get(5).setCellValueFactory(new PropertyValueFactory("user_email"));
         });
 
         ShowWorkersButton.setOnAction(event->{

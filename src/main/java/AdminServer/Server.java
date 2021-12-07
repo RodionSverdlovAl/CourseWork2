@@ -163,6 +163,23 @@ public class Server {
                                             e.printStackTrace();
                                         }
                                     }break;
+                                    case "showusers":{
+                                        System.out.println("Вы вошли в кейс просмотр пользователей");
+                                        DatabaseHandlerUsers d = new DatabaseHandlerUsers();
+                                        ArrayList<Users> users = d.getUsers();
+                                        ArrayList<Users> arrayList = new ArrayList<Users>();
+                                        for(Users p : users){
+                                            arrayList.add(p);
+                                        }
+                                        try {
+                                            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                                            objectOutputStream.writeObject(arrayList);
+                                        }
+                                        catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+
+                                    }break;
                                     case "showadmins": {
                                         System.out.println("Вы вошли в кейс просмотр админов");
                                         DatabaseHandler d = new DatabaseHandler();

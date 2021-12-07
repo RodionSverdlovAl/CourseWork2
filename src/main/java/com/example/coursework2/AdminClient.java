@@ -2,6 +2,7 @@ package com.example.coursework2;
 
 import Clasess.AccountingWorkers;
 import Clasess.Admins;
+import Clasess.Users;
 import Clasess.Worker;
 
 import java.io.*;
@@ -128,6 +129,7 @@ public class AdminClient {
         return null;
     }
 
+
     ArrayList<Worker> showWorkers(){
         try(Socket clientSocket = new Socket("127.0.0.1",8081);
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
@@ -147,6 +149,35 @@ public class AdminClient {
                     for(int i=0; i<arrayList.size(); i++){
                         System.out.println(arrayList.get(i).getWorker_name());
                     }
+                    return arrayList;
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            log = "Не удалось подключится к серверу";
+        }
+        return null;
+    }
+
+    ArrayList<Users> showUsers(){
+        try(Socket clientSocket = new Socket("127.0.0.1",8081);
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
+        {
+            log = "Вы подключились к серверу";
+            writer.write("showusers");writer.newLine();
+            writer.flush();
+            ArrayList<Users> arrayList = new ArrayList<Users>();
+            try {
+                ObjectInputStream objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
+                try {
+                    Object object = objectInputStream.readObject();
+                    arrayList =  (ArrayList<Users>) object;
+                    System.out.println(arrayList.size());
                     return arrayList;
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();

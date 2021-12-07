@@ -137,22 +137,20 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="737.0" prefWidth="828.0">
                                        <children>
-                                          <TableView layoutX="49.0" layoutY="38.0" prefHeight="561.0" prefWidth="709.0">
+                                          <TableView fx:id="SHOWUSERTABLE" layoutX="49.0" layoutY="38.0" prefHeight="561.0" prefWidth="709.0">
                                             <columns>
-                                              <TableColumn prefWidth="125.0" text="Имя" />
-                                              <TableColumn prefWidth="128.0" text="Фамилия" />
-                                                <TableColumn prefWidth="100.0" text="Логин" />
-                                                <TableColumn prefWidth="115.0" text="Пороль" />
-                                                <TableColumn prefWidth="109.0" text="Страна" />
-                                                <TableColumn prefWidth="131.0" text="Email" />
+                                              <TableColumn prefWidth="27.0" text="id" />
+                                              <TableColumn prefWidth="118.0" text="имя" />
+                                                <TableColumn prefWidth="120.0" text="фамилия" />
+                                                <TableColumn prefWidth="136.0" text="логин" />
+                                                <TableColumn prefWidth="141.0" text="пороль" />
+                                                <TableColumn prefWidth="166.0" text="email" />
                                             </columns>
                                           </TableView>
+                                          <Button fx:id="showUsersButton" layoutX="49.0" layoutY="611.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Обновить" />
+                                          <Button fx:id="deleteUserButton" layoutX="295.0" layoutY="611.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Удалить" />
+                                          <TextField fx:id="UserDeleteID" layoutX="404.0" layoutY="611.0" prefHeight="25.0" prefWidth="58.0" promptText="id" />
                                        </children></AnchorPane>
-                              </content>
-                            </Tab>
-                            <Tab text="удаление пользователя">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                               </content>
                             </Tab>
                           </tabs>

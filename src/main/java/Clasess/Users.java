@@ -1,6 +1,8 @@
 package Clasess;
 
-public class Users {
+import java.io.Serializable;
+
+public class Users implements Serializable {
     private String user_id;
     private String user_firstname;
     private String user_lastname;

@@ -1,10 +1,13 @@
 package Database;
 
 import AdminServer.Configs;
+import Clasess.Admins;
+import Const.Const;
 import Const.ConstUsers;
 import Clasess.Users;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DatabaseHandlerUsers extends Configs {
     Connection dbConnection;
@@ -62,5 +65,30 @@ public class DatabaseHandlerUsers extends Configs {
         return resSet;
     }
 
+    public ArrayList<Users> getUsers() {
+        ArrayList<Users> products = new ArrayList<Users>();
+        String select = "SELECT * FROM " + ConstUsers.USER_TABLE;
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(select);
+            ResultSet resSet = prSt.executeQuery();
+            while (resSet.next()) {
+                Users p = new Users();
+                p.setUser_firstname(resSet.getString("firstname"));
+                p.setUser_lastname(resSet.getString("lastname"));
+                p.setUser_login(resSet.getString("login"));
+                p.setUser_password(resSet.getString("password"));
+                p.setUser_email(resSet.getString("email"));
+                p.setUser_id(resSet.getString("id"));
+                p.setUser_gender((resSet.getString("gender")));
+                p.setUser_location(resSet.getString("location"));
+                products.add(p);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return products;
+    }
 
 }
