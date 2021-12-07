@@ -155,21 +155,30 @@ public class AdminAppController {
     private TextArea FinishSalary;
     @FXML
     private Button ANALITIC_RELOAD_BUTTON;
-
     @FXML
-    private Text DEP_1;
-
+    private Text DEP_11;
     @FXML
     private Text DEP_2;
-
+    @FXML
+    private Text DEP_21;
     @FXML
     private Text DEP_3;
-
+    @FXML
+    private Text DEP_31;
     @FXML
     private Text DEP_4;
-
+    @FXML
+    private Text DEP_41;
     @FXML
     private Text DEP_5;
+    @FXML
+    private Text DEP_51;
+    @FXML
+    private Text DEP_1;
+    @FXML
+    private Button RELOAD_PIECHART_REBOK;
+    @FXML
+    private PieChart REBUKE_PIECHART;
 
     private ArrayList<Admins> AdminArrayList  = new ArrayList<>();
     private ArrayList<Users> UserArrayList  = new ArrayList<>();
@@ -182,6 +191,46 @@ public class AdminAppController {
 
     @FXML
     void initialize() {
+
+        RELOAD_PIECHART_REBOK.setOnAction(event->{
+            AdminClient adminClient2 = new AdminClient();
+            ArrayList<AccountingWorkers> Workers2 = adminClient2.showAccountingWorkers();
+            int dev,sell,add,log,man;
+            dev=sell=add=log=man = 0;
+            for(AccountingWorkers p : Workers2){
+                if(p.getWorker_departament().length()==10 && p.getAcc_rebuke().length()==4){
+                    dev++;
+                }
+                if(p.getWorker_departament().length() == 6&& p.getAcc_rebuke().length()==4){
+                    sell++;
+                }
+                if(p.getWorker_departament().length()==8&& p.getAcc_rebuke().length()==4){
+                    add++;
+                }
+                if(p.getWorker_departament().length()==9&& p.getAcc_rebuke().length()==4){
+                    log++;
+                }
+                if(p.getWorker_departament().length()==16&& p.getAcc_rebuke().length()==4){
+                    man++;
+                }
+            }
+            DEP_11.setText("Отдел разработки: "+dev + " выговоров");
+            DEP_21.setText("Отдел Продаж: "+sell+" выговоров");
+            DEP_31.setText("Отдел Рекламмы: "+add+" выговоров");
+            DEP_41.setText("Отдел Логистики: "+log+" выговоров");
+            DEP_51.setText("Отдел Производственный: "+man+" выговоров");
+
+            ObservableList<PieChart.Data> piechartdata =
+                    FXCollections.observableArrayList(
+                            new PieChart.Data("Разработки",dev),
+                            new PieChart.Data("Продаж",sell),
+                            new PieChart.Data("Рекламмы",add),
+                            new PieChart.Data("Логистики",log),
+                            new PieChart.Data("Производственный",man));
+            REBUKE_PIECHART.getData().clear();
+            REBUKE_PIECHART.getData().addAll(piechartdata);
+        });
+
         ANALITIC_RELOAD_BUTTON.setOnAction(event->{
             AdminClient adminClient2 = new AdminClient();
             ArrayList<Worker> Workers2 = adminClient2.showWorkers();

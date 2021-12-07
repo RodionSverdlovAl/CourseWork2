@@ -405,7 +405,7 @@
                                        </children></AnchorPane>
                               </content>
                             </Tab>
-                              <Tab text="аналитика по отделам">
+                              <Tab text="анализ отделов по работникам">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
@@ -441,6 +441,46 @@
                                              </font>
                                           </Text>
                                           <Button fx:id="ANALITIC_RELOAD_BUTTON" layoutX="371.0" layoutY="462.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Обновить " />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="анализ отделов по кол-ву выговоров">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <PieChart fx:id="REBUKE_PIECHART" layoutX="20.0" layoutY="54.0" style="-fx-background-color: #FFFFFF;" />
+                                          <Label layoutX="46.0" layoutY="14.0" text="Соотношение отделов по колличеству выговоров" textFill="WHITE">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Text fx:id="DEP_11" fill="#9ecfff" layoutX="46.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Разработки">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="DEP_21" fill="#9ecfff" layoutX="46.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Продаж">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="DEP_31" fill="#9ecfff" layoutX="46.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Рекламмы">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="DEP_41" fill="#9ecfff" layoutX="46.0" layoutY="588.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Логистики">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="DEP_51" fill="#9ecfff" layoutX="46.0" layoutY="625.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Производственный">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Text>
+                                          <Button fx:id="RELOAD_PIECHART_REBOK" layoutX="371.0" layoutY="462.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Обновить " />
                                        </children>
                                     </AnchorPane>
                                  </content>
