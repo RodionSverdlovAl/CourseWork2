@@ -8,10 +8,13 @@ import Clasess.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 
 public class AdminAppController {
+
     @FXML
     private Button RELOAD_ACCOUNTING;
     @FXML
@@ -150,6 +153,23 @@ public class AdminAppController {
     private Button ShowSalaryButton;
     @FXML
     private TextArea FinishSalary;
+    @FXML
+    private Button ANALITIC_RELOAD_BUTTON;
+
+    @FXML
+    private Text DEP_1;
+
+    @FXML
+    private Text DEP_2;
+
+    @FXML
+    private Text DEP_3;
+
+    @FXML
+    private Text DEP_4;
+
+    @FXML
+    private Text DEP_5;
 
     private ArrayList<Admins> AdminArrayList  = new ArrayList<>();
     private ArrayList<Users> UserArrayList  = new ArrayList<>();
@@ -158,7 +178,50 @@ public class AdminAppController {
     private ArrayList<Salary> salaryWorkers = new ArrayList<>();
 
     @FXML
+    private PieChart DEPARTAMENT_DIAGRAM;
+
+    @FXML
     void initialize() {
+        ANALITIC_RELOAD_BUTTON.setOnAction(event->{
+            AdminClient adminClient2 = new AdminClient();
+            ArrayList<Worker> Workers2 = adminClient2.showWorkers();
+            int dev,sell,add,log,man;
+            dev=sell=add=log=man = 0;
+            for(Worker p : Workers2){
+                if(p.getWorker_departament().length()==10){
+                    dev++;
+                }
+                if(p.getWorker_departament().length() == 6){
+                    sell++;
+                }
+                if(p.getWorker_departament().length()==8){
+                    add++;
+                }
+                if(p.getWorker_departament().length()==9){
+                    log++;
+                }
+                if(p.getWorker_departament().length()==16){
+                    man++;
+                }
+            }
+            DEP_1.setText("Отдел разработки: "+dev);
+            DEP_2.setText("Отдел Продаж: "+sell);
+            DEP_3.setText("Отдел Рекламмы: "+add);
+            DEP_4.setText("Отдел Логистики: "+log);
+            DEP_5.setText("Отдел Производственный: "+man);
+
+            ObservableList<PieChart.Data> piechartdata =
+                    FXCollections.observableArrayList(
+                            new PieChart.Data("Разработки",dev),
+                            new PieChart.Data("Продаж",sell),
+                            new PieChart.Data("Рекламмы",add),
+                            new PieChart.Data("Логистики",log),
+                            new PieChart.Data("Производственный",man));
+            DEPARTAMENT_DIAGRAM.getData().clear();
+            DEPARTAMENT_DIAGRAM.getData().addAll(piechartdata);
+
+
+        });
 
         ShowSalaryButton.setOnAction(event->{
             AdminClient adminClient = new AdminClient();
@@ -172,6 +235,13 @@ public class AdminAppController {
             SalaryTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory("Worker_surname"));
             SalaryTable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory("Worker_departament"));
             SalaryTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory("Worker_salary"));
+
+            double SumSalary = 0.0;
+            for(Salary p : salaryWorkers){
+                SumSalary += Double.valueOf(p.getWorker_salary());
+            }
+            FinishSalary.setText("Итого: "+String.valueOf(SumSalary)+" рублей");
+
         });
 
 
