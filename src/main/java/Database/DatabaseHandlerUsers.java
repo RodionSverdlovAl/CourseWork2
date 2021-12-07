@@ -91,4 +91,19 @@ public class DatabaseHandlerUsers extends Configs {
         return products;
     }
 
+    public void DeleteUser(String id){
+        String delete = "DELETE FROM " + ConstUsers.USER_TABLE + " WHERE " + ConstUsers.USER_ID + "='" + id + "'; ";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(delete);
+            prSt.executeUpdate();
+            System.out.println("id принятое на сервер = " + id);
+            System.out.println("Аккаунт пользователя успешно удален");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

@@ -208,6 +208,12 @@ public class Server {
                                         String id = reader.readLine();
                                         d.DeleteWorker(id);
                                     }break;
+                                    case "deleteUser":{
+                                        System.out.println("Вы вошли в кейс удаление пользователей");
+                                        DatabaseHandlerUsers d = new DatabaseHandlerUsers();
+                                        String id =reader.readLine();
+                                        d.DeleteUser(id);
+                                    }break;
                                     case "deleteAdmin":{
                                         System.out.println("Вы вошли в кейс удаление админов");
                                         DatabaseHandler d = new DatabaseHandler();

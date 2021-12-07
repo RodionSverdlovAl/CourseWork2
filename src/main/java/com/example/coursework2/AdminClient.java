@@ -237,6 +237,18 @@ public class AdminClient {
         }
     }
 
+    void DeleteUser(String id){
+        try(Socket clientSocket = new Socket("127.0.0.1",8081);
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
+        {
+            writer.write("deleteUser");writer.newLine();
+            writer.write(id);writer.newLine();
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     void DeleteAdmin(String id){ // просто передаю id на сервак
         try(Socket clientSocket = new Socket("127.0.0.1",8081);
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));

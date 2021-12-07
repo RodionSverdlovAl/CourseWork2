@@ -183,6 +183,11 @@ public class AdminAppController {
             adminClient.DeleteWorker(id);
         });
 
+        deleteUserButton.setOnAction(event->{
+            String id = UserDeleteID.getText();
+            AdminClient adminClient = new AdminClient();
+            adminClient.DeleteUser(id);
+        });
         DeleteAdminButton.setOnAction(event ->{
             String id = idForDelete.getText();
             AdminClient adminClient = new AdminClient();
