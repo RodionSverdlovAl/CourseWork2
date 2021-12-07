@@ -485,6 +485,46 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
+                              <Tab text="анализ отделов по часам">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <PieChart fx:id="HOUR_PIECHART" layoutX="20.0" layoutY="54.0" style="-fx-background-color: #FFFFFF;" />
+                                          <Label layoutX="46.0" layoutY="14.0" text="Соотношение отделов по колличеству колличеству часов" textFill="WHITE">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Text fx:id="DEP_313" fill="#9ecfff" layoutX="46.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Разработки">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="DEP_32" fill="#9ecfff" layoutX="46.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Продаж">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="DEP_33" fill="#9ecfff" layoutX="46.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Рекламмы">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="DEP_34" fill="#9ecfff" layoutX="46.0" layoutY="588.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Логистики">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="DEP_35" fill="#9ecfff" layoutX="46.0" layoutY="625.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Производственный">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Text>
+                                          <Button fx:id="HOUR_PIECHART_BUTTON" layoutX="371.0" layoutY="462.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Обновить " />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
                           </tabs>
                         </TabPane>
                      </children>

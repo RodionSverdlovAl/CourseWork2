@@ -155,6 +155,24 @@ public class AdminAppController {
     private TextArea FinishSalary;
     @FXML
     private Button ANALITIC_RELOAD_BUTTON;
+
+
+    @FXML
+    private PieChart HOUR_PIECHART;
+    @FXML
+    private Button HOUR_PIECHART_BUTTON;
+    @FXML
+    private Text DEP_313;
+    @FXML
+    private Text DEP_32;
+    @FXML
+    private Text DEP_33;
+    @FXML
+    private Text DEP_34;
+    @FXML
+    private Text DEP_35;
+
+
     @FXML
     private Text DEP_11;
     @FXML
@@ -229,6 +247,46 @@ public class AdminAppController {
                             new PieChart.Data("Производственный",man));
             REBUKE_PIECHART.getData().clear();
             REBUKE_PIECHART.getData().addAll(piechartdata);
+        });
+
+
+        HOUR_PIECHART_BUTTON.setOnAction(event->{
+            AdminClient adminClient2 = new AdminClient();
+            ArrayList<AccountingWorkers> Workers2 = adminClient2.showAccountingWorkers();
+            int dev,sell,add,log,man;
+            dev=sell=add=log=man = 0;
+            for(AccountingWorkers p : Workers2){
+                if(p.getWorker_departament().length()==10){
+                    dev+=Integer.parseInt(p.getAcc_hour());
+                }
+                if(p.getWorker_departament().length() == 6){
+                    sell+=Integer.parseInt(p.getAcc_hour());
+                }
+                if(p.getWorker_departament().length()==8){
+                    add+=Integer.parseInt(p.getAcc_hour());
+                }
+                if(p.getWorker_departament().length()==9){
+                    log+=Integer.parseInt(p.getAcc_hour());
+                }
+                if(p.getWorker_departament().length()==16){
+                    man+=Integer.parseInt(p.getAcc_hour());
+                }
+            }
+            DEP_313.setText("Отдел разработки: "+dev + " часов");
+            DEP_32.setText("Отдел Продаж: "+sell+" часов");
+            DEP_33.setText("Отдел Рекламмы: "+add+" часов");
+            DEP_34.setText("Отдел Логистики: "+log+" часов");
+            DEP_35.setText("Отдел Производственный: "+man+" часов");
+
+            ObservableList<PieChart.Data> piechartdata =
+                    FXCollections.observableArrayList(
+                            new PieChart.Data("Разработки",dev),
+                            new PieChart.Data("Продаж",sell),
+                            new PieChart.Data("Рекламмы",add),
+                            new PieChart.Data("Логистики",log),
+                            new PieChart.Data("Производственный",man));
+            HOUR_PIECHART.getData().clear();
+            HOUR_PIECHART.getData().addAll(piechartdata);
         });
 
         ANALITIC_RELOAD_BUTTON.setOnAction(event->{
