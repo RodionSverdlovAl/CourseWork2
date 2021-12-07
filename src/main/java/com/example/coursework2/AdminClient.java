@@ -136,16 +136,31 @@ public class AdminClient {
             writer.newLine();
             writer.flush();
             ArrayList<Salary> arrayList = new ArrayList<Salary>();
+            ArrayList<Salary> salaryworkers = new ArrayList<>();
             try {
                 ObjectInputStream objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
                 try {
                     Object object = objectInputStream.readObject();
                     arrayList =  (ArrayList<Salary>) object;
-                    System.out.println(arrayList.size());
-                    for(int i=0; i<arrayList.size(); i++){
-                        System.out.println(arrayList.get(i).getWorker_name());
+                    for(Salary p : arrayList){
+                        int kolvo = p.getAcc_rebuke().length();
+                        if(kolvo == 3){
+                            double sal = 0;
+                            Integer bonus = Integer.parseInt(p.getAcc_bonus());
+                            double percentbonus = bonus*0.01;
+                            double persent = (percentbonus+1.0);
+                            sal = Integer.parseInt(p.getWorker_salary()) * Integer.parseInt(p.getAcc_hour()) * persent;
+                            p.setWorker_salary(String.valueOf(sal));
+                        }
+                        if(kolvo==4){
+                            double sal = 0;
+                            sal = Integer.parseInt(p.getWorker_salary()) * Integer.parseInt(p.getAcc_hour());
+                            p.setWorker_salary(String.valueOf(sal));
+                        }
+                        salaryworkers.add(p);
                     }
-                    return arrayList;
+
+                    return salaryworkers;
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }

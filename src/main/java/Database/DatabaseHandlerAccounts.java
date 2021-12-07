@@ -151,24 +151,10 @@ public class DatabaseHandlerAccounts extends Configs {
                 sw.setWorker_name(resSet.getString("name"));
                 sw.setWorker_surname(resSet.getString("surname"));
                 sw.setWorker_departament(resSet.getString("departament"));
-                //sw.setWorker_salary(resSet.getString("salary"));
+                sw.setWorker_salary(resSet.getString("salary"));
                 sw.setAcc_hour(resSet.getString("hour"));
                 sw.setAcc_bonus(resSet.getString("bonus"));
                 sw.setAcc_rebuke(resSet.getString("rebuke"));
-                Integer sal = Integer.parseInt(resSet.getString("salary"));
-                Integer hou = Integer.parseInt(sw.getAcc_hour());
-                Integer persent = (Integer.parseInt(sw.getAcc_bonus())/100)+1;
-                Integer SumSal = 0;
-                if(sw.getAcc_rebuke() == "нет"){
-                    SumSal = sal*hou*persent;
-                }else
-                if(sw.getAcc_rebuke() == "есть"){
-                    SumSal = sal*hou;
-                }
-                else{
-                    SumSal = sal*hou;
-                }
-                sw.setWorker_salary(SumSal.toString());
                 salary.add(sw);
             }
         } catch (SQLException throwables) {
