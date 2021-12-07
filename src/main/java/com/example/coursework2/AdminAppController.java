@@ -90,6 +90,8 @@ public class AdminAppController {
     @FXML
     private Button SignUpAdminButton;
     @FXML
+    private Button Accounting_add_worker1;
+    @FXML
     private TextField adminemailfield;
     @FXML
     private TextField adminloginfield;
@@ -546,6 +548,12 @@ public class AdminAppController {
             Accounting_table.getColumns().get(2).setCellValueFactory(new PropertyValueFactory("Worker_departament"));
             Accounting_table.getColumns().get(3).setCellValueFactory(new PropertyValueFactory("Worker_position"));
 
+        });
+
+        Accounting_add_worker1.setOnAction(event->{ // удаление работника из учета
+            String id = Accounting_id.getText();
+            AdminClient adminClient = new AdminClient();
+            adminClient.DeleteAccountingWorker(id);
         });
 
         Accounting_add_worker.setOnAction(event->{

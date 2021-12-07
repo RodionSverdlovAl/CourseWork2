@@ -5,6 +5,7 @@ import AdminServer.Configs;
 import Clasess.AccountingWorkers;
 import Clasess.Salary;
 import Clasess.Worker;
+import Const.Const;
 import Const.ConstAccounts;
 import Const.ConstWorker;
 
@@ -163,6 +164,19 @@ public class DatabaseHandlerAccounts extends Configs {
             e.printStackTrace();
         }
         return salary;
+    }
+    public void DeleteAccountingWorker(String id){
+        String delete = "DELETE FROM " + ConstAccounts.ACCOUNTS_TABLE + " WHERE " + ConstAccounts.ACCOUNTS_IDWORKER + "='" + id + "'; ";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(delete);
+            prSt.executeUpdate();
+            System.out.println("id принятое на сервер = " + id);
+            System.out.println("Работник успешно удален из учета");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public ArrayList<AccountingWorkers> getAccountingWorkers() {

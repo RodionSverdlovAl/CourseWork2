@@ -229,6 +229,12 @@ public class Server {
                                         String id =reader.readLine();
                                         d.DeleteUser(id);
                                     }break;
+                                    case "deleteAccountionWorker":{
+                                        System.out.println("Вы вошли в кейс удаление работника из учета");
+                                        DatabaseHandlerAccounts d = new DatabaseHandlerAccounts();
+                                        String id = reader.readLine();
+                                        d.DeleteAccountingWorker(id);
+                                    }break;
                                     case "deleteAdmin":{
                                         System.out.println("Вы вошли в кейс удаление админов");
                                         DatabaseHandler d = new DatabaseHandler();
