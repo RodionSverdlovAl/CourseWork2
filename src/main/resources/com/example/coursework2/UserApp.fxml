@@ -1,14 +1,229 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.coursework2.UserAppController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="1005.0" style="-fx-background-color: #071827;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coursework2.UserAppController">
+    <children>
+        <TabPane layoutX="180.0" prefHeight="710.0" prefWidth="822.0" style="-fx-background-color: #373D49; -fx-border-color: #3B3E4A;" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Персонал">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TabPane layoutX="-2.0" prefHeight="769.0" prefWidth="822.0" tabClosingPolicy="UNAVAILABLE">
+                                    <tabs>
+                                        <Tab text="Просмотр всего персонала">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <TableView fx:id="ShowWorkerTable" layoutX="18.0" layoutY="34.0" prefHeight="498.0" prefWidth="788.0">
+                                                            <columns>
+                                                                <TableColumn prefWidth="102.0" text="Имя" />
+                                                                <TableColumn prefWidth="118.0" text="Фамилия" />
+                                                                <TableColumn prefWidth="119.0" text="Отчество" />
+                                                                <TableColumn prefWidth="123.0" text="Отдел" />
+                                                                <TableColumn prefWidth="123.0" text="Должность" />
+                                                                <TableColumn prefWidth="62.0" text="Зарплата" />
+                                                                <TableColumn prefWidth="88.0" text="год рождения" />
+                                                                <TableColumn prefWidth="48.0" text="id" />
+                                                            </columns>
+                                                        </TableView>
+                                                        <Button fx:id="ShowWorkersButton" layoutX="18.0" layoutY="544.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="221.0" text="Обновить" />
+                                                    </children></AnchorPane>
+                                            </content>
+                                        </Tab>
+                                    </tabs>
+                                </TabPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Анализ деятельности персонала">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TabPane prefHeight="681.0" prefWidth="822.0" tabClosingPolicy="UNAVAILABLE">
+                                    <tabs>
+                                        <Tab text="просмотр работников">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <TableView fx:id="ACCOUNTING_TABLE" layoutX="14.0" layoutY="14.0" prefHeight="530.0" prefWidth="808.0">
+                                                            <columns>
+                                                                <TableColumn prefWidth="146.0" text="Имя" />
+                                                                <TableColumn prefWidth="134.0" text="Фамилия" />
+                                                                <TableColumn prefWidth="128.0" text="Отдел" />
+                                                                <TableColumn prefWidth="160.0" text="Должность" />
+                                                                <TableColumn prefWidth="91.0" text="кол-во часов" />
+                                                                <TableColumn prefWidth="71.0" text="премия %" />
+                                                                <TableColumn prefWidth="65.0" text="выговор" />
+                                                            </columns>
+                                                        </TableView>
+                                                        <Button fx:id="RELOAD_ACCOUNTING" layoutX="14.0" layoutY="555.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="обновить" />
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="расчет зарплаты">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <TableView fx:id="SalaryTable" layoutX="28.0" layoutY="14.0" prefHeight="414.0" prefWidth="594.0">
+                                                            <columns>
+                                                                <TableColumn prefWidth="45.0" text="id" />
+                                                                <TableColumn prefWidth="127.0" text="Имя" />
+                                                                <TableColumn prefWidth="147.0" text="Фамилия" />
+                                                                <TableColumn prefWidth="183.0" text="Отдел" />
+                                                                <TableColumn text="Сумма" />
+                                                            </columns>
+                                                        </TableView>
+                                                        <TextArea fx:id="FinishSalary" layoutX="28.0" layoutY="438.0" prefHeight="38.0" prefWidth="243.0" />
+                                                        <Button fx:id="ShowSalaryButton" layoutX="647.0" layoutY="14.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="149.0" text="Расчитать зарплаты" />
+                                                    </children></AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="анализ отделов по работникам">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <PieChart fx:id="DEPARTAMENT_DIAGRAM" layoutX="20.0" layoutY="54.0" style="-fx-background-color: #FFFFFF;" />
+                                                        <Label layoutX="46.0" layoutY="14.0" text="Соотношение отделов по колличеству работников" textFill="WHITE">
+                                                            <font>
+                                                                <Font size="20.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Text fx:id="DEP_1" fill="#9ecfff" layoutX="46.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Разработки">
+                                                            <font>
+                                                                <Font name="System Bold" size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text fx:id="DEP_2" fill="#9ecfff" layoutX="46.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Продаж">
+                                                            <font>
+                                                                <Font name="System Bold" size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text fx:id="DEP_3" fill="#9ecfff" layoutX="46.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Рекламмы">
+                                                            <font>
+                                                                <Font name="System Bold" size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text fx:id="DEP_4" fill="#9ecfff" layoutX="46.0" layoutY="588.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Логистики">
+                                                            <font>
+                                                                <Font name="System Bold" size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text fx:id="DEP_5" fill="#9ecfff" layoutX="46.0" layoutY="625.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Производственный">
+                                                            <font>
+                                                                <Font name="System Bold" size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Button fx:id="ANALITIC_RELOAD_BUTTON" layoutX="371.0" layoutY="462.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Обновить " />
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="анализ отделов по кол-ву выговоров">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <PieChart fx:id="REBUKE_PIECHART" layoutX="20.0" layoutY="54.0" style="-fx-background-color: #FFFFFF;" />
+                                                        <Label layoutX="46.0" layoutY="14.0" text="Соотношение отделов по колличеству выговоров" textFill="WHITE">
+                                                            <font>
+                                                                <Font size="20.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Text fx:id="DEP_11" fill="#9ecfff" layoutX="46.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Разработки">
+                                                            <font>
+                                                                <Font name="System Bold" size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text fx:id="DEP_21" fill="#9ecfff" layoutX="46.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Продаж">
+                                                            <font>
+                                                                <Font name="System Bold" size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text fx:id="DEP_31" fill="#9ecfff" layoutX="46.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Рекламмы">
+                                                            <font>
+                                                                <Font name="System Bold" size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text fx:id="DEP_41" fill="#9ecfff" layoutX="46.0" layoutY="588.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Логистики">
+                                                            <font>
+                                                                <Font name="System Bold" size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text fx:id="DEP_51" fill="#9ecfff" layoutX="46.0" layoutY="625.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Производственный">
+                                                            <font>
+                                                                <Font name="System Bold" size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Button fx:id="RELOAD_PIECHART_REBOK" layoutX="371.0" layoutY="462.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Обновить " />
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="анализ отделов по часам">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <PieChart fx:id="HOUR_PIECHART" layoutX="20.0" layoutY="54.0" style="-fx-background-color: #FFFFFF;" />
+                                                        <Label layoutX="46.0" layoutY="14.0" text="Соотношение отделов по колличеству колличеству часов" textFill="WHITE">
+                                                            <font>
+                                                                <Font size="20.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Text fx:id="DEP_313" fill="#9ecfff" layoutX="46.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Разработки">
+                                                            <font>
+                                                                <Font name="System Bold" size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text fx:id="DEP_32" fill="#9ecfff" layoutX="46.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Продаж">
+                                                            <font>
+                                                                <Font name="System Bold" size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text fx:id="DEP_33" fill="#9ecfff" layoutX="46.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Рекламмы">
+                                                            <font>
+                                                                <Font name="System Bold" size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text fx:id="DEP_34" fill="#9ecfff" layoutX="46.0" layoutY="588.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Логистики">
+                                                            <font>
+                                                                <Font name="System Bold" size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Text fx:id="DEP_35" fill="#9ecfff" layoutX="46.0" layoutY="625.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Производственный">
+                                                            <font>
+                                                                <Font name="System Bold" size="18.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Button fx:id="HOUR_PIECHART_BUTTON" layoutX="371.0" layoutY="462.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Обновить " />
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                    </tabs>
+                                </TabPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <Label layoutX="17.0" layoutY="14.0" text="Пользователь" textFill="WHITE">
+            <font>
+                <Font name="Courier New" size="19.0" />
+            </font>
+        </Label>
+    </children>
 </AnchorPane>

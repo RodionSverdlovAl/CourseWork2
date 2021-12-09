@@ -1,7 +1,7 @@
 package Database;
 
-import Clasess.Admins;
 import AdminServer.Configs;
+import Clasess.Admins;
 import Const.Const;
 
 import java.sql.Connection;
