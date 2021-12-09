@@ -554,6 +554,7 @@ public class AdminAppController {
             String id = Accounting_id.getText();
             AdminClient adminClient = new AdminClient();
             adminClient.DeleteAccountingWorker(id);
+            Accounting_logs_area.setText("Работник удален из учета");
         });
 
         Accounting_add_worker.setOnAction(event->{
@@ -562,28 +563,33 @@ public class AdminAppController {
             Worker worker;
             worker = adminClient.FindWorker(id);
             adminClient.Accounting_add_worker(worker);
+            Accounting_logs_area.setText("Работник добавлен в учет");
         });
         Accounting_add_rebuke_button.setOnAction(event->{
             String id = Accounting_id.getText();
             AdminClient adminClient = new AdminClient();
             adminClient.Accounting_add_rebuke(id);
+            Accounting_logs_area.setText("Работнику назначено дисциплинарное взыскание");
         });
         Accounting_delete_rebuke_button.setOnAction(event->{
             String id = Accounting_id.getText();
             AdminClient adminClient = new AdminClient();
             adminClient.Accounting_delete_rebuke(id);
+            Accounting_logs_area.setText("С работника снято дисциплинарное взыскание");
         });
         Accounting_bonus_button.setOnAction(event->{
             Integer bonus_p = Accounting_select_procent.getValue();
             String id = Accounting_id.getText();
             AdminClient adminClient = new AdminClient();
             adminClient.Accounting_bonus(bonus_p,id);
+            Accounting_logs_area.setText("Работнику назначена премия");
         });
         Accounting_add_hour_button.setOnAction(event->{
             String id = Accounting_id.getText();
             Integer hours = Accounting_select_hour.getValue();
             AdminClient adminClient = new AdminClient();
             adminClient.Accounting_add_hour(hours,id);
+            Accounting_logs_area.setText("Вы добавили работнику "+Accounting_select_hour.getValue() + " часов");
         });
     }
 }
