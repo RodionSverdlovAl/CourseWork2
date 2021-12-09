@@ -11,11 +11,13 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="955.0" style="-fx-background-color: #071827;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coursework2.AdminAppController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="955.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coursework2.AdminAppController">
    <children>
       <TabPane layoutX="180.0" prefHeight="710.0" prefWidth="822.0" style="-fx-background-color: #373D49; -fx-border-color: #3B3E4A;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -34,27 +36,27 @@
                                                 <Font size="30.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="AdminNameInput" layoutX="135.0" layoutY="92.0" prefHeight="35.0" prefWidth="407.0" promptText="Введите имя" style="-fx-background-color: #373D49; -fx-border-color: #071827;">
+                                          <TextField fx:id="AdminNameInput" layoutX="135.0" layoutY="92.0" prefHeight="35.0" prefWidth="407.0" promptText="Введите имя" style="-fx-background-color: #FFFFFF; -fx-border-color: #071827;">
                                              <font>
                                                 <Font name="Courier New" size="20.0" />
                                              </font>
                                           </TextField>
-                                          <TextField fx:id="AdminLastnamefield" layoutX="135.0" layoutY="143.0" prefHeight="35.0" prefWidth="407.0" promptText="Введите фамилию" style="-fx-background-color: #373D49; -fx-border-color: #071827;">
+                                          <TextField fx:id="AdminLastnamefield" layoutX="135.0" layoutY="143.0" prefHeight="35.0" prefWidth="407.0" promptText="Введите фамилию" style="-fx-background-color: #FFFFFF; -fx-border-color: #071827;">
                                              <font>
                                                 <Font name="Courier New" size="20.0" />
                                              </font>
                                           </TextField>
-                                          <TextField fx:id="adminloginfield" layoutX="135.0" layoutY="198.0" prefHeight="35.0" prefWidth="407.0" promptText="Введите логин" style="-fx-background-color: #373D49; -fx-border-color: #071827;">
+                                          <TextField fx:id="adminloginfield" layoutX="135.0" layoutY="198.0" prefHeight="35.0" prefWidth="407.0" promptText="Введите логин" style="-fx-background-color: #FFFFFF; -fx-border-color: #071827;">
                                              <font>
                                                 <Font name="Courier New" size="20.0" />
                                              </font>
                                           </TextField>
-                                          <TextField fx:id="adminpasswordfield" layoutX="135.0" layoutY="249.0" prefHeight="35.0" prefWidth="407.0" promptText="Введите пороль" style="-fx-background-color: #373D49; -fx-border-color: #071827;">
+                                          <TextField fx:id="adminpasswordfield" layoutX="135.0" layoutY="249.0" prefHeight="35.0" prefWidth="407.0" promptText="Введите пороль" style="-fx-background-color: #FFFFFF; -fx-border-color: #071827;">
                                              <font>
                                                 <Font name="Courier New" size="20.0" />
                                              </font>
                                           </TextField>
-                                          <TextField fx:id="adminemailfield" layoutX="135.0" layoutY="302.0" prefHeight="35.0" prefWidth="407.0" promptText="Введите email" style="-fx-background-color: #373D49; -fx-border-color: #071827;">
+                                          <TextField fx:id="adminemailfield" layoutX="135.0" layoutY="302.0" prefHeight="35.0" prefWidth="407.0" promptText="Введите email" style="-fx-background-color: #FFFFFF; -fx-border-color: #071827;">
                                              <font>
                                                 <Font name="Courier New" size="20.0" />
                                              </font>
@@ -138,7 +140,7 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="737.0" prefWidth="828.0">
                                        <children>
-                                          <TableView fx:id="SHOWUSERTABLE" layoutX="49.0" layoutY="38.0" prefHeight="561.0" prefWidth="709.0">
+                                          <TableView fx:id="SHOWUSERTABLE" layoutX="49.0" layoutY="38.0" prefHeight="561.0" prefWidth="718.0">
                                             <columns>
                                               <TableColumn prefWidth="27.0" text="id" />
                                               <TableColumn prefWidth="118.0" text="имя" />
@@ -271,13 +273,13 @@
                         <TextField fx:id="Accounting_id" layoutX="33.0" layoutY="80.0" prefHeight="37.0" prefWidth="51.0" promptText="id" />
                         <Button fx:id="Accounting_select_button" layoutX="86.0" layoutY="81.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="63.0" text="выбрать" />
                         <Label layoutX="33.0" layoutY="45.0" text="Введите id работника которому хотите добавить часы" textFill="WHITE" />
-                        <Spinner fx:id="Accounting_select_hour" layoutX="38.0" layoutY="188.0" prefHeight="31.0" prefWidth="95.0" />
-                        <Button fx:id="Accounting_add_hour_button" layoutX="148.0" layoutY="188.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="158.0" text="добавить часы" />
-                        <Button fx:id="Accounting_bonus_button" layoutX="322.0" layoutY="188.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="123.0" text="Премировать" />
+                        <Spinner fx:id="Accounting_select_hour" layoutX="38.0" layoutY="188.0" prefHeight="31.0" prefWidth="158.0" />
+                        <Button fx:id="Accounting_add_hour_button" layoutX="39.0" layoutY="227.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="158.0" text="добавить часы" />
+                        <Button fx:id="Accounting_bonus_button" layoutX="39.0" layoutY="332.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="158.0" text="Премировать" />
                         <Label layoutX="38.0" layoutY="171.0" text="Добавьте часы работнику" textFill="WHITE" />
-                        <Button fx:id="Accounting_add_rebuke_button" layoutX="245.0" layoutY="235.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="309.0" text="Назначить дисциплинарное взыскание" />
-                        <TextArea fx:id="Accounting_logs_area" layoutX="33.0" layoutY="235.0" prefHeight="135.0" prefWidth="200.0" />
-                        <Button fx:id="Accounting_delete_rebuke_button" layoutX="245.0" layoutY="279.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="310.0" text="Снять дисциплинарное взыскание" />
+                        <Button fx:id="Accounting_add_rebuke_button" layoutX="268.0" layoutY="211.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="309.0" style="-fx-background-color: #CD5C5C;" text="Назначить дисциплинарное взыскание" />
+                        <TextArea fx:id="Accounting_logs_area" layoutX="33.0" layoutY="600.0" prefHeight="47.0" prefWidth="678.0" />
+                        <Button fx:id="Accounting_delete_rebuke_button" layoutX="268.0" layoutY="258.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="310.0" style="-fx-background-color: #20B2AA;" text="Снять дисциплинарное взыскание" />
                         <TableView fx:id="Accounting_table" layoutX="164.0" layoutY="67.0" prefHeight="66.0" prefWidth="640.0">
                           <columns>
                             <TableColumn prefWidth="134.0" text="Имя" />
@@ -286,7 +288,7 @@
                               <TableColumn prefWidth="202.0" text="Должность" />
                           </columns>
                         </TableView>
-                        <ComboBox fx:id="Accounting_select_procent" layoutX="453.0" layoutY="188.0" prefHeight="32.0" prefWidth="100.0" promptText="\% премии" />
+                        <ComboBox fx:id="Accounting_select_procent" layoutX="39.0" layoutY="290.0" prefHeight="32.0" prefWidth="158.0" promptText="\% премии" />
                         <Button fx:id="Accounting_add_worker" layoutX="543.0" layoutY="146.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="263.0" text="Добавить работника в учет деятельности" />
                         <Button fx:id="Accounting_add_worker1" layoutX="268.0" layoutY="146.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="263.0" text="Удаление работника из учета" />
                      </children>
@@ -323,17 +325,17 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TableView fx:id="SalaryTable" layoutX="28.0" layoutY="14.0" prefHeight="414.0" prefWidth="594.0">
+                                          <TableView fx:id="SalaryTable" layoutX="28.0" layoutY="14.0" prefHeight="414.0" prefWidth="785.0">
                                             <columns>
                                               <TableColumn prefWidth="45.0" text="id" />
-                                              <TableColumn prefWidth="127.0" text="Имя" />
-                                                <TableColumn prefWidth="147.0" text="Фамилия" />
-                                                <TableColumn prefWidth="183.0" text="Отдел" />
-                                                <TableColumn text="Сумма" />
+                                              <TableColumn prefWidth="166.0" text="Имя" />
+                                                <TableColumn prefWidth="208.0" text="Фамилия" />
+                                                <TableColumn prefWidth="230.0" text="Отдел" />
+                                                <TableColumn prefWidth="135.0" text="Сумма" />
                                             </columns>
                                           </TableView>
                                           <TextArea fx:id="FinishSalary" layoutX="28.0" layoutY="438.0" prefHeight="38.0" prefWidth="243.0" />
-                                          <Button fx:id="ShowSalaryButton" layoutX="647.0" layoutY="14.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="149.0" text="Расчитать зарплаты" />
+                                          <Button fx:id="ShowSalaryButton" layoutX="288.0" layoutY="438.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="149.0" text="Расчитать зарплаты" />
                                        </children></AnchorPane>
                               </content>
                             </Tab>
@@ -467,11 +469,13 @@
       </TabPane>
       <Label layoutX="17.0" layoutY="14.0" text="АДМИНИСТРАТОР" textFill="WHITE">
          <font>
-            <Font name="Courier New" size="19.0" />
+            <Font name="Courier New Bold" size="19.0" />
          </font>
       </Label>
-      <Text fill="WHITE" layoutX="13.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Name" wrappingWidth="146.8203125" />
-      <Text fill="WHITE" layoutX="13.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin LastName" wrappingWidth="157.732421875" />
-      <Text fill="WHITE" layoutX="14.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Email" wrappingWidth="123.451171875" />
+      <ImageView fitHeight="150.0" fitWidth="177.0" layoutX="3.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/adminicon.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
